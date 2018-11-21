@@ -1,0 +1,21 @@
+{
+    "operations": {
+        "getBooking": {
+            "httpMethod": "GET",
+            "description": "Get all Bookings",
+            "uri": "booking.json",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        }
+
+    },
+    "models": {
+        "getResponse": {
+            "type": "object",
+            "additionalProperties": {
+                "location": "json"
+            }
+        }
+    }
+}

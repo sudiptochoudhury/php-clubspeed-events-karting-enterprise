@@ -1,0 +1,11 @@
+composer.phar
+/vendor/
+# composer.lock
+.idea/
+composer.lock
+.phpunit.result.cache
+logs/
+tests/
+phpunit.xml
+clubspeed-karting.json
+

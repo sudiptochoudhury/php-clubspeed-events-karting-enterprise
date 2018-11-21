@@ -9,3 +9,5 @@ tests/
 phpunit.xml
 clubspeed-karting.json
 
+csrk.json
+help.md

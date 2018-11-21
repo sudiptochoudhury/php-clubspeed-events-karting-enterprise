@@ -1,2 +1,2 @@
-# php-clubspeed-karting-systems
+# php-clubspeed-karting
 PHP API Client Library to consume Clubspeed Rental Karting API

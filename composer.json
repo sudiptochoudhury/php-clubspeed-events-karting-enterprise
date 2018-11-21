@@ -1,5 +1,5 @@
 {
-    "name": "sudiptochoudhury/php-clubspeed-karting-api",
+    "name": "sudiptochoudhury/php-clubspeed-karting",
     "description": "PHP Client Library to consume ClubSpeed Rental Karting API",
     "keywords":["ClubSpeed", "Rental Karting", "php", "client", "rest", "api", "json"],
     "type": "library",

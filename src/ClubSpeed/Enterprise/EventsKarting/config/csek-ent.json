@@ -1,0 +1,2295 @@
+{
+    "additionalProperties": true,
+    "name": "ClubSpeed Events Karting Enterprise API",
+    "operations": {
+        "getVersion": {
+            "httpMethod": "GET",
+            "description": "Get Club Speed version",
+            "uri": "version/current",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+        "getApiVersion": {
+            "httpMethod": "GET",
+            "description": "Get API version",
+            "uri": "version/api",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+        "getOSVersion": {
+            "httpMethod": "GET",
+            "description": "Get OS version",
+            "uri": "version/os",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+        "getSQLVersion": {
+            "httpMethod": "GET",
+            "description": "Get SQL version",
+            "uri": "version/sql",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+        "getSettings": {
+            "httpMethod": "GET",
+            "description": "Get all settings of a group",
+            "uri": "settings/get?group={group}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "group": {
+                    "required": true,
+                    "location": "query"
+                }
+            }
+        },
+        "getSetting": {
+            "httpMethod": "GET",
+            "description": "Get individual setting",
+            "uri": "settings/get?group={group}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "group": {
+                    "required": true,
+                    "location": "query"
+                },
+                "setting": {
+                    "required": true,
+                    "location": "query"
+                }
+            }
+        },
+        "getKioskSettings": {
+            "httpMethod": "GET",
+            "description": "Get Kiosk settings",
+            "uri": "settings/get?group={group}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "group": {
+                    "default": "kiosk",
+                    "static": true,
+                    "location": "query"
+                }
+            }
+        },
+        "getAppImages": {
+            "httpMethod": "GET",
+            "description": "Retrieve images by app",
+            "uri": "/settings/getImages?app={app}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "app": {
+                    "location": "query"
+                }
+            }
+        },
+        "getTracks": {
+            "httpMethod": "GET",
+            "description": "Get SQL version",
+            "uri": "tracks/index",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+        "getChannelConfig": {
+            "httpMethod": "GET",
+            "description": "Get Club Speed channel configuration",
+            "uri": "channel/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "testUserLogin": {
+            "httpMethod": "GET",
+            "description": "Attempt to login a user",
+            "uri": "users/login?username={}&password={}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "username": {
+                    "location": "query",
+                    "required": true
+                },
+                "password": {
+                    "location": "query",
+                    "required": true
+                }
+            }
+        },
+        "testAdminUserLogin": {
+            "httpMethod": "GET",
+            "description": "Attempt to login an admin user",
+            "uri": "users/login",
+            "responseModel": "getResponse",
+            "parameters": {
+                "username": {
+                    "location": "query",
+                    "required": true
+                },
+                "password": {
+                    "location": "query",
+                    "required": true
+                },
+                "is_admin": {
+                    "location": "query",
+                    "default": 1,
+                    "static": true
+                }
+            }
+        },
+
+        "getBooking": {
+            "httpMethod": "GET",
+            "description": "Get Bookings",
+            "uri": "booking/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createBooking": {
+            "httpMethod": "POST",
+            "description": "Create Booking",
+            "uri": "booking",
+            "responseModel": "getResponse",
+            "parameters": {
+                "heat": {
+                    "sentAs": "heatId",
+                    "location": "json",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                },
+                "quantity": {
+                    "sentAs": "quantityTotal",
+                    "location": "json",
+                    "type": ["integer", "string"],
+                    "required": true
+                }
+            }
+        },
+        "updateBooking": {
+            "httpMethod": "PUT",
+            "description": "Update Booking",
+            "uri": "booking/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "heat": {
+                    "sentAs": "heatId",
+                    "location": "json",
+                    "type": ["integer", "string"]
+                },
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"]
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                },
+                "quantity": {
+                    "sentAs": "quantityTotal",
+                    "location": "json",
+                    "type": ["integer", "string"]
+                }
+            }
+        },
+        "deleteBooking": {
+            "httpMethod": "DELETE",
+            "description": "Delete Bookings",
+            "uri": "booking/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getBookingCount": {
+            "httpMethod": "GET",
+            "description": "Get Bookings count",
+            "uri": "booking/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+        "getBookingAvailability": {
+            "httpMethod": "GET",
+            "description": "Get all Bookings",
+            "uri": "bookingAvailability",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getCheckDetails": {
+            "httpMethod": "GET",
+            "description": "Get CheckDetails",
+            "uri": "checkDetails/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createCheckDetails": {
+            "httpMethod": "POST",
+            "description": "Create CheckDetails",
+            "uri": "checkDetails",
+            "responseModel": "getResponse",
+            "parameters": {
+
+            }
+        },
+        "updateCheckDetails": {
+            "httpMethod": "PUT",
+            "description": "Update CheckDetails",
+            "uri": "checkDetails/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                }
+            }
+        },
+        "deleteCheckDetails": {
+            "httpMethod": "DELETE",
+            "description": "Delete CheckDetails",
+            "uri": "checkDetails/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getCheckDetailsCount": {
+            "httpMethod": "GET",
+            "description": "Get CheckDetails count",
+            "uri": "checkDetails/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+        "getChecks": {
+            "httpMethod": "GET",
+            "description": "Get Checks",
+            "uri": "checks/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createChecks": {
+            "httpMethod": "POST",
+            "description": "Create Checks",
+            "uri": "checks",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+        "updateChecks": {
+            "httpMethod": "PUT",
+            "description": "Update Checks",
+            "uri": "checks/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                }
+            }
+        },
+        "deleteCheck": {
+            "httpMethod": "POST",
+            "description": "Void Check",
+            "uri": "checks/{id}/void",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getChecksCount": {
+            "httpMethod": "GET",
+            "description": "Get Checks count",
+            "uri": "checks/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+        "finalizeCheck": {
+            "httpMethod": "POST",
+            "description": "Finalize Check",
+            "uri": "checks/{id}/finalize",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                },
+                "details": {
+                    "type": "array",
+                    "location": "json",
+                    "required": true,
+                    "items": {
+                        "type": "object",
+                        "required": true,
+                        "properties": {
+                            "checkDetailId": {
+                                "required": true
+                            },
+                            "heatId": {
+                                "required": true
+                            }
+                        }
+                    }
+                }
+
+            }
+        },
+
+        "getCheckTotals": {
+            "httpMethod": "GET",
+            "description": "Get CheckTotals",
+            "uri": "checkTotals/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createCheckTotals": {
+            "httpMethod": "POST",
+            "description": "Create CheckTotals",
+            "uri": "checkTotals",
+            "responseModel": "getResponse",
+            "parameters": {
+                "checks": {
+                    "location": "json",
+                    "type": "array",
+                    "required": true,
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "customerId": {
+                                "required": true
+                            },
+                            "checkDiscountId": {},
+                            "userId": {},
+                            "details": {
+                                "type": "array",
+                                "required": true,
+                                "items": {
+                                    "productId": {
+                                        "required": true
+                                    },
+                                    "qty": {
+                                        "required": true
+                                    },
+                                    "checkDetailDiscountId": {
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "calculateCheckTotals": {
+            "httpMethod": "POST",
+            "description": "Create CheckTotals",
+            "uri": "checkTotals/virtual",
+            "responseModel": "getResponse",
+            "parameters": {
+                "checks": {
+                    "location": "json",
+                    "type": "array",
+                    "required": true,
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "customerId": {
+                                "required": true
+                            },
+                            "checkDiscountId": {},
+                            "userId": {},
+                            "details": {
+                                "type": "array",
+                                "required": true,
+                                "items": {
+                                    "productId": {
+                                        "required": true
+                                    },
+                                    "qty": {
+                                        "required": true
+                                    },
+                                    "checkDetailDiscountId": {
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "getCheckTotalsCount": {
+            "httpMethod": "GET",
+            "description": "Get CheckTotals count",
+            "uri": "checkTotals/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getCustomers": {
+            "httpMethod": "GET",
+            "description": "Get Customers",
+            "uri": "customers/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createCustomers": {
+            "httpMethod": "POST",
+            "description": "Create Customers",
+            "uri": "customers",
+            "responseModel": "getResponse",
+            "parameters": {
+
+            }
+        },
+        "updateCustomers": {
+            "httpMethod": "PUT",
+            "description": "Update Customers",
+            "uri": "customers/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                }
+            }
+        },
+        "deleteCustomers": {
+            "httpMethod": "DELETE",
+            "description": "Delete Customers",
+            "uri": "customers/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getCustomersCount": {
+            "httpMethod": "GET",
+            "description": "Get Customers count",
+            "uri": "customers/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getDiscountType": {
+            "httpMethod": "GET",
+            "description": "Get DiscountType",
+            "uri": "discountType/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createDiscountType": {
+            "httpMethod": "POST",
+            "description": "Create DiscountType",
+            "uri": "discountType",
+            "responseModel": "getResponse",
+            "parameters": {
+
+            }
+        },
+        "updateDiscountType": {
+            "httpMethod": "PUT",
+            "description": "Update DiscountType",
+            "uri": "discountType/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                }
+            }
+        },
+        "deleteDiscountType": {
+            "httpMethod": "DELETE",
+            "description": "Delete DiscountType",
+            "uri": "discountType/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getDiscountTypeCount": {
+            "httpMethod": "GET",
+            "description": "Get DiscountTypes count",
+            "uri": "discountType/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+
+
+        "getEventHeatDetails": {
+            "httpMethod": "GET",
+            "description": "Get EventHeatDetails",
+            "uri": "eventHeatDetails/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createEventHeatDetails": {
+            "httpMethod": "POST",
+            "description": "Create EventHeatDetails",
+            "uri": "eventHeatDetails",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+        "updateEventHeatDetails": {
+            "httpMethod": "PUT",
+            "description": "Update EventHeatDetails",
+            "uri": "eventHeatDetails/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                }
+            }
+        },
+        "deleteEventHeatDetails": {
+            "httpMethod": "DELETE",
+            "description": "Delete EventHeatDetails",
+            "uri": "eventHeatDetails/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getEventHeatDetailsCount": {
+            "httpMethod": "GET",
+            "description": "Get EventHeatDetails count",
+            "uri": "eventHeatDetails/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+
+        "getEventHeatTypes": {
+            "httpMethod": "GET",
+            "description": "Get EventHeatTypes",
+            "uri": "eventHeatTypes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createEventHeatTypes": {
+            "httpMethod": "POST",
+            "description": "Create EventHeatTypes",
+            "uri": "eventHeatTypes",
+            "responseModel": "getResponse",
+            "parameters": {
+
+            }
+        },
+        "updateEventHeatTypes": {
+            "httpMethod": "PUT",
+            "description": "Update EventHeatTypes",
+            "uri": "eventHeatTypes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                }
+        },
+        "deleteEventHeatTypes": {
+            "httpMethod": "DELETE",
+            "description": "Delete EventHeatTypes",
+            "uri": "eventHeatTypes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getEventHeatTypesCount": {
+            "httpMethod": "GET",
+            "description": "Get EventHeatTypes count",
+            "uri": "eventHeatTypes/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getEventReservationLinks": {
+            "httpMethod": "GET",
+            "description": "Get EventReservationLinks",
+            "uri": "eventReservationLinks/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createEventReservationLinks": {
+            "httpMethod": "POST",
+            "description": "Create EventReservationLinks",
+            "uri": "eventReservationLinks",
+            "responseModel": "getResponse",
+            "parameters": {
+
+            }
+        },
+        "updateEventReservationLinks": {
+            "httpMethod": "PUT",
+            "description": "Update EventReservationLinks",
+            "uri": "eventReservationLinks/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                }
+            }
+        },
+        "deleteEventReservationLinks": {
+            "httpMethod": "DELETE",
+            "description": "Delete EventReservationLinks",
+            "uri": "eventReservationLinks/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getEventReservationLinksCount": {
+            "httpMethod": "GET",
+            "description": "Get EventReservationLinks count",
+            "uri": "eventReservationLinks/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getEventReservations": {
+            "httpMethod": "GET",
+            "description": "Get EventReservations",
+            "uri": "eventReservations/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createEventReservations": {
+            "httpMethod": "POST",
+            "description": "Create EventReservations",
+            "uri": "eventReservations",
+            "responseModel": "getResponse",
+            "parameters": {
+
+            }
+        },
+        "updateEventReservations": {
+            "httpMethod": "PUT",
+            "description": "Update EventReservations",
+            "uri": "eventReservations/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                }
+            }
+        },
+        "updateEventReservationStatus": {
+            "httpMethod": "PUT",
+            "description": "Update EventReservation status",
+            "uri": "eventReservations/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "statusId": {
+                    "sentAs": "status",
+                    "location": "json",
+                    "type": ["integer", "string"]
+                }
+            }
+        },
+        "deleteEventReservations": {
+            "httpMethod": "DELETE",
+            "description": "Delete EventReservations",
+            "uri": "eventReservations/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getEventReservationsCount": {
+            "httpMethod": "GET",
+            "description": "Get EventReservations count",
+            "uri": "eventReservations/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+        "getEventReservationTypes": {
+            "httpMethod": "GET",
+            "description": "Get EventReservationTypes",
+            "uri": "eventReservationTypes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createEventReservationTypes": {
+            "httpMethod": "POST",
+            "description": "Create EventReservationTypes",
+            "uri": "eventReservationTypes",
+            "responseModel": "getResponse",
+            "parameters": {
+
+            }
+        },
+        "updateEventReservationTypes": {
+            "httpMethod": "PUT",
+            "description": "Update EventReservationTypes",
+            "uri": "eventReservationTypes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                }
+            }
+        },
+        "deleteEventReservationTypes": {
+            "httpMethod": "DELETE",
+            "description": "Delete EventReservationTypes",
+            "uri": "eventReservationTypes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getEventReservationTypesCount": {
+            "httpMethod": "GET",
+            "description": "Get EventReservationTypes count",
+            "uri": "eventReservationTypes/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getEventRounds": {
+            "httpMethod": "GET",
+            "description": "Get EventRounds",
+            "uri": "eventRounds/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createEventRounds": {
+            "httpMethod": "POST",
+            "description": "Create EventRounds",
+            "uri": "eventRounds",
+            "responseModel": "getResponse",
+            "parameters": {
+
+            }
+        },
+        "updateEventRounds": {
+            "httpMethod": "PUT",
+            "description": "Update EventRounds",
+            "uri": "eventRounds/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                }
+            }
+        },
+        "deleteEventRounds": {
+            "httpMethod": "DELETE",
+            "description": "Delete EventRounds",
+            "uri": "eventRounds/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getEventRoundsCount": {
+            "httpMethod": "GET",
+            "description": "Get EventRounds count",
+            "uri": "eventRounds/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getEvents": {
+            "httpMethod": "GET",
+            "description": "Get Events",
+            "uri": "events/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createEvents": {
+            "httpMethod": "POST",
+            "description": "Create Events",
+            "uri": "events",
+            "responseModel": "getResponse",
+            "parameters": {
+
+            }
+        },
+        "updateEvents": {
+            "httpMethod": "PUT",
+            "description": "Update Events",
+            "uri": "events/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                }
+            }
+        },
+        "deleteEvents": {
+            "httpMethod": "DELETE",
+            "description": "Delete Events",
+            "uri": "events/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getEventsCount": {
+            "httpMethod": "GET",
+            "description": "Get Events count",
+            "uri": "events/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getEventStatuses": {
+            "httpMethod": "GET",
+            "description": "Get EventStatuses",
+            "uri": "eventStatuses/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createEventStatuses": {
+            "httpMethod": "POST",
+            "description": "Create EventStatuses",
+            "uri": "eventStatuses",
+            "responseModel": "getResponse",
+            "parameters": {
+
+            }
+        },
+        "updateEventStatuses": {
+            "httpMethod": "PUT",
+            "description": "Update EventStatuses",
+            "uri": "eventStatuses/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                }
+            }
+        },
+        "deleteEventStatuses": {
+            "httpMethod": "DELETE",
+            "description": "Delete EventStatuses",
+            "uri": "eventStatuses/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getEventStatusesCount": {
+            "httpMethod": "GET",
+            "description": "Get EventStatuses count",
+            "uri": "eventStatuses/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getEventTasks": {
+            "httpMethod": "GET",
+            "description": "Get EventTasks",
+            "uri": "eventTasks/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createEventTasks": {
+            "httpMethod": "POST",
+            "description": "Create EventTasks",
+            "uri": "eventTasks",
+            "responseModel": "getResponse",
+            "parameters": {
+
+            }
+        },
+        "updateEventTasks": {
+            "httpMethod": "PUT",
+            "description": "Update EventTasks",
+            "uri": "eventTasks/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                }
+            }
+        },
+        "deleteEventTasks": {
+            "httpMethod": "DELETE",
+            "description": "Delete EventTasks",
+            "uri": "eventTasks/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getEventTasksCount": {
+            "httpMethod": "GET",
+            "description": "Get EventTasks count",
+            "uri": "eventTasks/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getEventTaskTypes": {
+            "httpMethod": "GET",
+            "description": "Get EventTaskTypes",
+            "uri": "eventTaskTypes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createEventTaskTypes": {
+            "httpMethod": "POST",
+            "description": "Create EventTaskTypes",
+            "uri": "eventTaskTypes",
+            "responseModel": "getResponse",
+            "parameters": {
+
+            }
+        },
+        "updateEventTaskTypes": {
+            "httpMethod": "PUT",
+            "description": "Update EventTaskTypes",
+            "uri": "eventTaskTypes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                }
+            }
+        },
+        "deleteEventTaskTypes": {
+            "httpMethod": "DELETE",
+            "description": "Delete EventTaskTypes",
+            "uri": "eventTaskTypes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getEventTaskTypesCount": {
+            "httpMethod": "GET",
+            "description": "Get EventTaskTypes count",
+            "uri": "eventTaskTypes/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getEventTypes": {
+            "httpMethod": "GET",
+            "description": "Get EventTypes",
+            "uri": "eventTypes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createEventTypes": {
+            "httpMethod": "POST",
+            "description": "Create EventTypes",
+            "uri": "eventTypes",
+            "responseModel": "getResponse",
+            "parameters": {
+
+            }
+        },
+        "updateEventTypes": {
+            "httpMethod": "PUT",
+            "description": "Update EventTypes",
+            "uri": "eventTypes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                }
+            }
+        },
+        "deleteEventTypes": {
+            "httpMethod": "DELETE",
+            "description": "Delete EventTypes",
+            "uri": "eventTypes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getEventTypesCount": {
+            "httpMethod": "GET",
+            "description": "Get EventTypes count",
+            "uri": "eventTypes/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getGiftCardHistory": {
+            "httpMethod": "GET",
+            "description": "Get GiftCardHistory",
+            "uri": "giftCardHistory/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createGiftCardHistory": {
+            "httpMethod": "POST",
+            "description": "Create GiftCardHistory",
+            "uri": "giftCardHistory",
+            "responseModel": "getResponse",
+            "parameters": {
+
+            }
+        },
+        "updateGiftCardHistory": {
+            "httpMethod": "PUT",
+            "description": "Update GiftCardHistory",
+            "uri": "giftCardHistory/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                }
+            }
+        },
+        "deleteGiftCardHistory": {
+            "httpMethod": "DELETE",
+            "description": "Delete GiftCardHistory",
+            "uri": "giftCardHistory/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getGiftCardHistoryCount": {
+            "httpMethod": "GET",
+            "description": "Get GiftCardHistorys count",
+            "uri": "giftCardHistory/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getHeatDetails": {
+            "httpMethod": "GET",
+            "description": "Get HeatDetails",
+            "uri": "heatDetails/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createHeatDetails": {
+            "httpMethod": "POST",
+            "description": "Create HeatDetails",
+            "uri": "heatDetails",
+            "responseModel": "getResponse",
+            "parameters": {
+
+            }
+        },
+        "updateHeatDetails": {
+            "httpMethod": "PUT",
+            "description": "Update HeatDetails",
+            "uri": "heatDetails/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                }
+            }
+        },
+        "deleteHeatDetails": {
+            "httpMethod": "DELETE",
+            "description": "Delete HeatDetails",
+            "uri": "heatDetails/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getHeatDetailsCount": {
+            "httpMethod": "GET",
+            "description": "Get HeatDetails count",
+            "uri": "heatDetails/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getHeatMain": {
+            "httpMethod": "GET",
+            "description": "Get HeatMain",
+            "uri": "heatMain/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createHeatMain": {
+            "httpMethod": "POST",
+            "description": "Create HeatMain",
+            "uri": "heatMain",
+            "responseModel": "getResponse",
+            "parameters": {
+
+            }
+        },
+        "updateHeatMain": {
+            "httpMethod": "PUT",
+            "description": "Update HeatMain",
+            "uri": "heatMain/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                }
+            }
+        },
+        "deleteHeatMain": {
+            "httpMethod": "DELETE",
+            "description": "Delete HeatMain",
+            "uri": "heatMain/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getHeatMainCount": {
+            "httpMethod": "GET",
+            "description": "Get HeatMains count",
+            "uri": "heatMain/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+        "getHeatTypes": {
+            "httpMethod": "GET",
+            "description": "Get HeatTypes",
+            "uri": "heatTypes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createHeatTypes": {
+            "httpMethod": "POST",
+            "description": "Create HeatTypes",
+            "uri": "heatTypes",
+            "responseModel": "getResponse",
+            "parameters": {
+
+            }
+        },
+        "updateHeatTypes": {
+            "httpMethod": "PUT",
+            "description": "Update HeatTypes",
+            "uri": "heatTypes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                }
+            }
+        },
+        "deleteHeatTypes": {
+            "httpMethod": "DELETE",
+            "description": "Delete HeatTypes",
+            "uri": "heatTypes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getHeatTypesCount": {
+            "httpMethod": "GET",
+            "description": "Get HeatTypes count",
+            "uri": "heatTypes/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getMemberships": {
+            "httpMethod": "GET",
+            "description": "Get Memberships",
+            "uri": "memberships/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createMemberships": {
+            "httpMethod": "POST",
+            "description": "Create Memberships",
+            "uri": "memberships",
+            "responseModel": "getResponse",
+            "parameters": {
+
+            }
+        },
+        "updateMemberships": {
+            "httpMethod": "PUT",
+            "description": "Update Memberships",
+            "uri": "memberships/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                }
+            }
+        },
+        "deleteMemberships": {
+            "httpMethod": "DELETE",
+            "description": "Delete Memberships",
+            "uri": "memberships/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getMembershipsCount": {
+            "httpMethod": "GET",
+            "description": "Get Memberships count",
+            "uri": "memberships/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getMembershipTypes": {
+            "httpMethod": "GET",
+            "description": "Get MembershipTypes",
+            "uri": "membershipTypes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createMembershipTypes": {
+            "httpMethod": "POST",
+            "description": "Create MembershipTypes",
+            "uri": "membershipTypes",
+            "responseModel": "getResponse",
+            "parameters": {
+
+            }
+        },
+        "updateMembershipTypes": {
+            "httpMethod": "PUT",
+            "description": "Update MembershipTypes",
+            "uri": "membershipTypes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                }
+            }
+        },
+        "deleteMembershipTypes": {
+            "httpMethod": "DELETE",
+            "description": "Delete MembershipTypes",
+            "uri": "membershipTypes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getMembershipTypesCount": {
+            "httpMethod": "GET",
+            "description": "Get MembershipTypes count",
+            "uri": "membershipTypes/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getOmnipayVendors": {
+            "httpMethod": "GET",
+            "description": "List Vendors",
+            "uri": "omnipay/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "acceptOmnipayPayment": {
+            "httpMethod": "POST",
+            "description": "Accept Payment (omnipay)",
+            "uri": "omnipay/purchase",
+            "responseModel": "getResponse",
+            "parameters": {
+                "name": {
+                    "location": "json",
+                    "type": ["string"],
+                    "required": true
+                },
+                "amount": {
+                    "location": "json",
+                    "required": true
+                },
+                "transactionId": {
+                    "location": "json",
+                    "required": true
+                },
+                "currency": {
+                    "location": "json"
+                },
+                "returnUrl": {
+                    "location": "json"
+                },
+                "options": {
+                    "location": "json",
+                    "required": true,
+                    "type": "object"
+                },
+                "card": {
+                    "location": "json",
+                    "required": true,
+                    "type": "object"
+                }
+
+            }
+        },
+        "completeOmnipayPayment": {
+            "httpMethod": "POST",
+            "description": "Complete Payment (omnipay)",
+            "uri": "omnipay/complete",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+
+        "generateResetToken": {
+            "httpMethod": "POST",
+            "description": "Generate Reset Token",
+            "uri": "passwords",
+            "responseModel": "getResponse",
+            "parameters": {
+                "email": {
+                    "location": "json",
+                    "required": true
+                },
+                "url": {
+                    "location": "json"
+                }
+            }
+        },
+        "consumeResetToken": {
+            "httpMethod": "PUT",
+            "description": "Consume Reset Token",
+            "uri": "passwords",
+            "responseModel": "getResponse",
+            "parameters": {
+                "token": {
+                    "location": "json",
+                    "required": true
+                },
+                "password": {
+                    "location": "json",
+                    "required": true
+                }
+            }
+        },
+
+        "getPayments": {
+            "httpMethod": "GET",
+            "description": "Get Payments",
+            "uri": "payments/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createPayments": {
+            "httpMethod": "POST",
+            "description": "Create Payments",
+            "uri": "payments",
+            "responseModel": "getResponse",
+            "parameters": {
+
+            }
+        },
+        "updatePayments": {
+            "httpMethod": "PUT",
+            "description": "Update Payments",
+            "uri": "payments/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                }
+            }
+        },
+        "deletePayments": {
+            "httpMethod": "DELETE",
+            "description": "Delete Payments",
+            "uri": "payments/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getPaymentsCount": {
+            "httpMethod": "GET",
+            "description": "Get Payments count",
+            "uri": "payments/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "processPayment": {
+            "httpMethod": "POST",
+            "description": "Process Payment",
+            "uri": "processPayment",
+            "responseModel": "getResponse",
+            "parameters": {
+               "name": {
+                    "location": "json",
+                    "type": ["string"],
+                    "required": true
+                },
+                "options": {
+                    "location": "json",
+                    "required": true,
+                    "type": "object"
+                },
+                "check": {
+                    "location": "json",
+                    "required": true,
+                    "type": "object",
+                    "properties": {
+                        "checkId": {
+                            "required": true
+                        },
+                        "details": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "checkDetailId": {
+                                    },
+                                    "heatId": {
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "card": {
+                    "location": "json",
+                    "type": "object"
+                }
+            }
+        },
+        "updateProcessPayment": {
+            "httpMethod": "PUT",
+            "description": "Update ProcessPayment",
+            "uri": "processPayment/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                }
+            }
+        },
+        "deleteProcessPayment": {
+            "httpMethod": "DELETE",
+            "description": "Delete ProcessPayment",
+            "uri": "processPayment/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getProcessPaymentCount": {
+            "httpMethod": "GET",
+            "description": "Get ProcessPayments count",
+            "uri": "processPayment/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getProductClasses": {
+            "httpMethod": "GET",
+            "description": "Get ProductClasses",
+            "uri": "productClasses/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createProductClasses": {
+            "httpMethod": "POST",
+            "description": "Create ProductClasses",
+            "uri": "productClasses",
+            "responseModel": "getResponse",
+            "parameters": {
+
+            }
+        },
+        "updateProductClasses": {
+            "httpMethod": "PUT",
+            "description": "Update ProductClasses",
+            "uri": "productClasses/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                }
+            }
+        },
+        "deleteProductClasses": {
+            "httpMethod": "DELETE",
+            "description": "Delete ProductClasses",
+            "uri": "productClasses/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getProductClassesCount": {
+            "httpMethod": "GET",
+            "description": "Get ProductClasses count",
+            "uri": "productClasses/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getProducts": {
+            "httpMethod": "GET",
+            "description": "Get Products",
+            "uri": "products/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createProducts": {
+            "httpMethod": "POST",
+            "description": "Create Products",
+            "uri": "products",
+            "responseModel": "getResponse",
+            "parameters": {
+
+            }
+        },
+        "updateProducts": {
+            "httpMethod": "PUT",
+            "description": "Update Products",
+            "uri": "products/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                }
+            }
+        },
+        "deleteProducts": {
+            "httpMethod": "DELETE",
+            "description": "Delete Products",
+            "uri": "products/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getProductsCount": {
+            "httpMethod": "GET",
+            "description": "Get Products count",
+            "uri": "products/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getReservations": {
+            "httpMethod": "GET",
+            "description": "Get Reservations",
+            "uri": "reservations/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createReservations": {
+            "httpMethod": "POST",
+            "description": "Create Reservations",
+            "uri": "reservations",
+            "responseModel": "getResponse",
+            "parameters": {
+
+            }
+        },
+        "updateReservations": {
+            "httpMethod": "PUT",
+            "description": "Update Reservations",
+            "uri": "reservations/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                }
+            }
+        },
+        "deleteReservations": {
+            "httpMethod": "DELETE",
+            "description": "Delete Reservations",
+            "uri": "reservations/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getReservationsCount": {
+            "httpMethod": "GET",
+            "description": "Get Reservations count",
+            "uri": "reservations/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getSources": {
+            "httpMethod": "GET",
+            "description": "Get Sources",
+            "uri": "sources/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createSources": {
+            "httpMethod": "POST",
+            "description": "Create Sources",
+            "uri": "sources",
+            "responseModel": "getResponse",
+            "parameters": {
+
+            }
+        },
+        "updateSources": {
+            "httpMethod": "PUT",
+            "description": "Update Sources",
+            "uri": "sources/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                }
+            }
+        },
+        "deleteSources": {
+            "httpMethod": "DELETE",
+            "description": "Delete Sources",
+            "uri": "sources/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getSourcesCount": {
+            "httpMethod": "GET",
+            "description": "Get Sources count",
+            "uri": "sources/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getTaxes": {
+            "httpMethod": "GET",
+            "description": "Get Taxes",
+            "uri": "taxes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createTaxes": {
+            "httpMethod": "POST",
+            "description": "Create Taxes",
+            "uri": "taxes",
+            "responseModel": "getResponse",
+            "parameters": {
+
+            }
+        },
+        "updateTaxes": {
+            "httpMethod": "PUT",
+            "description": "Update Taxes",
+            "uri": "taxes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                }
+            }
+        },
+        "deleteTaxes": {
+            "httpMethod": "DELETE",
+            "description": "Delete Taxes",
+            "uri": "taxes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getTaxesCount": {
+            "httpMethod": "GET",
+            "description": "Get Taxes count",
+            "uri": "taxes/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getUsers": {
+            "httpMethod": "GET",
+            "description": "Get Users",
+            "uri": "users/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createUsers": {
+            "httpMethod": "POST",
+            "description": "Create Users",
+            "uri": "users",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+        "updateUsers": {
+            "httpMethod": "PUT",
+            "description": "Update Users",
+            "uri": "users/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                }
+            }
+        },
+        "deleteUsers": {
+            "httpMethod": "DELETE",
+            "description": "Delete Users",
+            "uri": "users/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getUsersCount": {
+            "httpMethod": "GET",
+            "description": "Get Users count",
+            "uri": "users/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "createRacer": {
+            "httpMethod": "POST",
+            "description": "Create as racer",
+            "uri": "racers/create",
+            "responseModel": "getResponse",
+            "parameters": {
+                "racername": {
+                    "location": "json",
+                    "required": true
+                },
+                "email": {
+                    "location": "json",
+                    "required": true
+                },
+                "password": {
+                    "location": "json",
+                    "required": true
+                },
+                "donotemail": {
+                    "location": "json",
+                    "required": true
+                },
+                "firstname": {
+                    "location": "json",
+                    "required": true
+                },
+                "lastname": {
+                    "location": "json",
+                    "required": true
+                },
+                "birthdate": {
+                    "location": "json",
+                    "required": true
+                },
+                "gender": {
+                    "location": "json",
+                    "required": true
+                },
+                "mobilephone": {
+                    "location": "json",
+                    "required": true
+                },
+                "address": {
+                    "sentAs": "Address",
+                    "location": "json",
+                    "required": true
+                },
+                "address2": {
+                    "sentAs": "Address2",
+                    "location": "json",
+                    "required": true
+                },
+                "city": {
+                    "sentAs": "City",
+                    "location": "json",
+                    "required": true
+                },
+                "country": {
+                    "sentAs": "Country",
+                    "location": "json",
+                    "required": true
+                },
+                "howdidyouhearaboutus": {
+                    "location": "json",
+                    "required": true
+                },
+                "state": {
+                    "sentAs": "State",
+                    "location": "json",
+                    "required": true
+                },
+                "zip": {
+                    "sentAs": "Zip",
+                    "location": "json",
+                    "required": true
+                }
+            }
+        },
+
+        "login": {
+            "httpMethod": "POST",
+            "description": "Login as racer",
+            "uri": "racers/login",
+            "responseModel": "getResponse",
+            "parameters": {
+                "username": {
+                    "location": "json",
+                    "required": true
+                },
+                "password": {
+                    "location": "json",
+                    "required": true
+                }
+            }
+        },
+        "loginFb": {
+            "httpMethod": "POST",
+            "description": "Login as racer using Facebook",
+            "uri": "racers/fb_login",
+            "responseModel": "getResponse",
+            "parameters": {
+                "email": {
+                    "location": "json",
+                    "required": true
+                },
+                "facebookId": {
+                    "location": "json",
+                    "required": true
+                },
+                "facebookToken": {
+                    "location": "json",
+                    "required": true
+                },
+                "facebookAllowEmail": {
+                    "location": "json",
+                    "required": true
+                },
+                "facebookAllowPost": {
+                    "location": "json",
+                    "required": true
+                },
+                "facebookEnabled": {
+                    "location": "json",
+                    "required": true
+                },
+                "facebookExpiresIn": {
+                    "location": "json"
+                },
+                "racername": {
+                    "location": "json"
+                },
+                "password": {
+                    "location": "json"
+                },
+                "donotemail": {
+                    "location": "json"
+                },
+                "firstname": {
+                    "location": "json"
+                },
+                "lastname": {
+                    "location": "json"
+                },
+                "birthdate": {
+                    "location": "json"
+                },
+                "gender": {
+                    "location": "json"
+                },
+                "mobilephone": {
+                    "location": "json"
+                },
+                "address": {
+                    "sentAs": "Address",
+                    "location": "json"
+                },
+                "address2": {
+                    "sentAs": "Address2",
+                    "location": "json"
+                },
+                "city": {
+                    "sentAs": "City",
+                    "location": "json"
+                },
+                "country": {
+                    "sentAs": "Country",
+                    "location": "json"
+                },
+                "howdidyouhearaboutus": {
+                    "location": "json"
+                },
+                "state": {
+                    "sentAs": "State",
+                    "location": "json"
+                },
+                "zip": {
+                    "sentAs": "Zip",
+                    "location": "json"
+                }
+            }
+        }
+
+
+
+
+    },
+    "models": {
+        "getResponse": {
+            "type": "object",
+            "additionalProperties": {
+                "location": "json"
+            }
+        }
+    }
+}

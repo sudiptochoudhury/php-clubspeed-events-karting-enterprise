@@ -7,7 +7,6 @@ composer.lock
 logs/
 tests/
 phpunit.xml
-clubspeed-karting.json
 
-csek-ent.json
-help.md
+./csek-ent.json
+./help.md

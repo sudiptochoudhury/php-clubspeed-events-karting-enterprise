@@ -27,7 +27,7 @@ class Api extends ApiForge
         ],
         'settings' => [
             'responseHandler' => null,
-//            'requestHandler' => null,
+            'requestHandler' => null,
         ],
 
     ];
@@ -55,7 +55,7 @@ class Api extends ApiForge
         $query = psr7\parse_query($uri->getQuery());
         $params['key'] = $this->options['api_key'];
         $queryParams = array_merge($params, $query);
-        $request = new Request('GET', $uri->withQuery(Psr7\build_query($queryParams)));
+        $request  = $request->withUri($uri->withQuery(Psr7\build_query($queryParams)));
         return $request;
 
     }

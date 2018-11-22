@@ -12,10 +12,9 @@
 | loading of any our classes "manually". Feels great to relax.
 |
 */
+require_once __DIR__ . '/src/ClubSpeed/Enterprise/EventsKarting/Support/autoloader.php';
 
-require_once __DIR__ . '/src/ClubSpeed/RentalKarting/Support/autoloader.php';
-
-use SudiptoChoudhury\ClubSpeed\RentalKarting\Support\Cli;
+use SudiptoChoudhury\ClubSpeed\Enterprise\EventsKarting\Support\Cli;
 
 Cli::$rootPath = __DIR__ . '/';
 

@@ -1,27 +1,27 @@
 <?php
 
-namespace SudiptoChoudhury\ClubSpeed\RentalKarting\Support;
+namespace SudiptoChoudhury\ClubSpeed\Enterprise\EventsKarting\Support;
 
 use SudiptoChoudhury\Support\Abstracts\AbstractCli;
 use splitbrain\phpcli\Options;
 
-use SudiptoChoudhury\ClubSpeed\RentalKarting\Api;
+use SudiptoChoudhury\ClubSpeed\Enterprise\EventsKarting\Api;
 
 class Cli extends AbstractCli
 {
 
     public static $rootPath = __DIR__;
     protected $versionName = 'version 0.0.1';
-    protected $welcome = 'ClubSpeed Rental Karting API CLI tool';
+    protected $welcome = 'ClubSpeed Events Karting (Enterprise) API CLI tool';
     protected $apiProvider = 'ClubSpeed';
 
-    protected $apiServiceDefPath = 'src/ClubSpeed/RentalKarting/config/csrk.json';
+    protected $apiServiceDefPath = 'src/ClubSpeed/Enterprise/EventsKarting/config/csek-ent.json';
     protected $apiService = [];
     protected $config = [];
     protected $commandOptions = []; // API options
 
 
-    protected $configFile = 'csrk.json';
+    protected $configFile = 'csek-ent.json';
     protected $log = null;
     protected $env = 'dev';
     protected $simulate = false;
@@ -60,17 +60,6 @@ class Cli extends AbstractCli
             \"uri\": \"{$operation}\",
             \"responseModel\": \"getResponse\",
             \"parameters\": {
-                \"product\": {
-                    \"sentAs\": \"productsId\",
-                    \"location\": \"json\",
-                    \"type\": [\"integer\", \"string\"],
-                    \"required\": true
-                },
-                \"public\": {
-                    \"sentAs\": \"isPublic\",
-                    \"location\": \"json\",
-                    \"type\": [\"boolean\", \"string\"]
-                }
             }
         },
         \"update{$operationTitleCase}\": {
@@ -83,16 +72,6 @@ class Cli extends AbstractCli
                     \"location\": \"uri\",
                     \"type\": [\"integer\", \"string\"],
                     \"required\": true
-                },
-                \"product\": {
-                    \"sentAs\": \"productsId\",
-                    \"location\": \"json\",
-                    \"type\": [\"integer\", \"string\"]
-                },
-                \"public\": {
-                    \"sentAs\": \"isPublic\",
-                    \"location\": \"json\",
-                    \"type\": [\"boolean\", \"string\"]
                 }
             }
         },
@@ -121,6 +100,11 @@ class Cli extends AbstractCli
         echo $json;
     }
 
+    /**
+     * @param $request \GuzzleHttp\Psr7\Request
+     *
+     * @return mixed
+     */
     public function requestHandler($request)
     {
         if (!$this->quiet) {
@@ -130,6 +114,11 @@ class Cli extends AbstractCli
         return $request;
     }
 
+    /**
+     * @param $response \GuzzleHttp\Psr7\Response
+     *
+     * @return mixed
+     */
     public function responseHandler($response)
     {
         if (!$this->quiet) {

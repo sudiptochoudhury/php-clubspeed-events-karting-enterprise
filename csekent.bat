@@ -1,4 +1,4 @@
 @echo off
 REM INITIATE PHP SCRIPT AND PASS ALL ARGUMENTS
-php csrk %*
+php csekent %*
 

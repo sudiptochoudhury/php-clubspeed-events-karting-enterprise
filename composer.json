@@ -1,9 +1,9 @@
 {
-    "name": "sudiptochoudhury/php-clubspeed-karting",
-    "description": "PHP Client Library to consume ClubSpeed Rental Karting API",
-    "keywords":["ClubSpeed", "Rental Karting", "php", "client", "rest", "api", "json"],
+    "name": "sudiptochoudhury/php-clubspeed-events-karting-enterprise",
+    "description": "PHP Client Library to consume ClubSpeed Events Karting (Enterprise) API",
+    "keywords":["ClubSpeed", "Events", "Karting", "php", "client", "rest", "api", "json"],
     "type": "library",
-    "homepage": "https://github.com/sudiptochoudhury/php-clubspeed-karting-api",
+    "homepage": "https://github.com/sudiptochoudhury/php-clubspeed-events-karting-enterprise",
     "license": "MIT",
     "authors": [
         {

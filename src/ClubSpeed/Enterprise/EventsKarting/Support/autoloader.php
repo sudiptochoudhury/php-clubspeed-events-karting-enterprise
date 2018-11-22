@@ -1,6 +1,6 @@
 <?php
 
-define('CSRK_CLI_START', microtime(true));
+define('CSEKENT_CLI_START', microtime(true));
 
 /*
 |--------------------------------------------------------------------------

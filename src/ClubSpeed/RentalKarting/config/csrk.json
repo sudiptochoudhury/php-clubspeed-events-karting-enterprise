@@ -1,13 +1,2545 @@
 {
+    "additionalProperties": true,
+    "name": "ClubSpeed API",
     "operations": {
+        "getVersion": {
+            "httpMethod": "GET",
+            "description": "Get Club Speed version",
+            "uri": "version/current",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+        "getApiVersion": {
+            "httpMethod": "GET",
+            "description": "Get API version",
+            "uri": "version/api",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+        "getOSVersion": {
+            "httpMethod": "GET",
+            "description": "Get OS version",
+            "uri": "version/os",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+        "getSQLVersion": {
+            "httpMethod": "GET",
+            "description": "Get SQL version",
+            "uri": "version/sql",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+        "getSettings": {
+            "httpMethod": "GET",
+            "description": "Get all settings of a group",
+            "uri": "settings/get?group={group}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "group": {
+                    "required": true,
+                    "location": "query"
+                }
+            }
+        },
+        "getSetting": {
+            "httpMethod": "GET",
+            "description": "Get individual setting",
+            "uri": "settings/get?group={group}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "group": {
+                    "required": true,
+                    "location": "query"
+                },
+                "setting": {
+                    "required": true,
+                    "location": "query"
+                }
+            }
+        },
+        "getKioskSettings": {
+            "httpMethod": "GET",
+            "description": "Get Kiosk settings",
+            "uri": "settings/get?group={group}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "group": {
+                    "default": "kiosk",
+                    "static": true,
+                    "location": "query"
+                }
+            }
+        },
+        "getAppImages": {
+            "httpMethod": "GET",
+            "description": "Retrieve images by app",
+            "uri": "/settings/getImages?app={app}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "app": {
+                    "location": "query"
+                }
+            }
+        },
+        "getTracks": {
+            "httpMethod": "GET",
+            "description": "Get SQL version",
+            "uri": "tracks/index",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+        "getChannelConfig": {
+            "httpMethod": "GET",
+            "description": "Get Club Speed channel configuration",
+            "uri": "channel/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "testUserLogin": {
+            "httpMethod": "GET",
+            "description": "Attempt to login a user",
+            "uri": "users/login?username={}&password={}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "username": {
+                    "location": "query",
+                    "required": true
+                },
+                "password": {
+                    "location": "query",
+                    "required": true
+                }
+            }
+        },
+        "testAdminUserLogin": {
+            "httpMethod": "GET",
+            "description": "Attempt to login an admin user",
+            "uri": "users/login",
+            "responseModel": "getResponse",
+            "parameters": {
+                "username": {
+                    "location": "query",
+                    "required": true
+                },
+                "password": {
+                    "location": "query",
+                    "required": true
+                },
+                "is_admin": {
+                    "location": "query",
+                    "default": 1,
+                    "static": true
+                }
+            }
+        },
+        "createRacer": {
+            "httpMethod": "POST",
+            "description": "Create as racer",
+            "uri": "racers/create",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+        "login": {
+            "httpMethod": "POST",
+            "description": "Login as racer",
+            "uri": "racers/login",
+            "responseModel": "getResponse",
+            "parameters": {
+                "username": {
+                    "location": "json",
+                    "required": true
+                },
+                "password": {
+                    "location": "json",
+                    "required": true
+                }
+            }
+        },
+        "loginFb": {
+            "httpMethod": "POST",
+            "description": "Login as racer using Facebook",
+            "uri": "racers/fb_login",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+        
         "getBooking": {
             "httpMethod": "GET",
+            "description": "Get Bookings",
+            "uri": "booking/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createBooking": {
+            "httpMethod": "POST",
+            "description": "Create Booking",
+            "uri": "booking",
+            "responseModel": "getResponse",
+            "parameters": {
+                "heat": {
+                    "sentAs": "heatId",
+                    "location": "json",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                },
+                "quantity": {
+                    "sentAs": "quantityTotal",
+                    "location": "json",
+                    "type": ["integer", "string"],
+                    "required": true
+                }
+            }
+        },
+        "updateBooking": {
+            "httpMethod": "PUT",
+            "description": "Update Booking",
+            "uri": "booking/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "heat": {
+                    "sentAs": "heatId",
+                    "location": "json",
+                    "type": ["integer", "string"]
+                },
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"]
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                },
+                "quantity": {
+                    "sentAs": "quantityTotal",
+                    "location": "json",
+                    "type": ["integer", "string"]
+                }
+            }
+        },
+        "deleteBooking": {
+            "httpMethod": "DELETE",
+            "description": "Delete Bookings",
+            "uri": "booking/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getBookingCount": {
+            "httpMethod": "GET",
+            "description": "Get Bookings count",
+            "uri": "booking/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+        "getBookingAvailability": {
+            "httpMethod": "GET",
             "description": "Get all Bookings",
-            "uri": "booking.json",
+            "uri": "bookingAvailability",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getCheckDetails": {
+            "httpMethod": "GET",
+            "description": "Get CheckDetails",
+            "uri": "checkDetails/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createCheckDetails": {
+            "httpMethod": "POST",
+            "description": "Create CheckDetails",
+            "uri": "checkDetails",
+            "responseModel": "getResponse",
+            "parameters": {
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "updateCheckDetails": {
+            "httpMethod": "PUT",
+            "description": "Update CheckDetails",
+            "uri": "checkDetails/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"]
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "deleteCheckDetails": {
+            "httpMethod": "DELETE",
+            "description": "Delete CheckDetails",
+            "uri": "checkDetails/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getCheckDetailsCount": {
+            "httpMethod": "GET",
+            "description": "Get CheckDetailss count",
+            "uri": "checkDetails/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getChecks": {
+            "httpMethod": "GET",
+            "description": "Get Checks",
+            "uri": "checks/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createChecks": {
+            "httpMethod": "POST",
+            "description": "Create Checks",
+            "uri": "checks",
+            "responseModel": "getResponse",
+            "parameters": {
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "updateChecks": {
+            "httpMethod": "PUT",
+            "description": "Update Checks",
+            "uri": "checks/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"]
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "deleteChecks": {
+            "httpMethod": "DELETE",
+            "description": "Delete Checks",
+            "uri": "checks/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getChecksCount": {
+            "httpMethod": "GET",
+            "description": "Get Checkss count",
+            "uri": "checks/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+
+        "getCustomers": {
+            "httpMethod": "GET",
+            "description": "Get Customers",
+            "uri": "customers/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createCustomers": {
+            "httpMethod": "POST",
+            "description": "Create Customers",
+            "uri": "customers",
+            "responseModel": "getResponse",
+            "parameters": {
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "updateCustomers": {
+            "httpMethod": "PUT",
+            "description": "Update Customers",
+            "uri": "customers/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"]
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "deleteCustomers": {
+            "httpMethod": "DELETE",
+            "description": "Delete Customers",
+            "uri": "customers/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getCustomersCount": {
+            "httpMethod": "GET",
+            "description": "Get Customerss count",
+            "uri": "customers/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getDiscountType": {
+            "httpMethod": "GET",
+            "description": "Get DiscountType",
+            "uri": "discountType/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createDiscountType": {
+            "httpMethod": "POST",
+            "description": "Create DiscountType",
+            "uri": "discountType",
+            "responseModel": "getResponse",
+            "parameters": {
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "updateDiscountType": {
+            "httpMethod": "PUT",
+            "description": "Update DiscountType",
+            "uri": "discountType/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"]
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "deleteDiscountType": {
+            "httpMethod": "DELETE",
+            "description": "Delete DiscountType",
+            "uri": "discountType/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getDiscountTypeCount": {
+            "httpMethod": "GET",
+            "description": "Get DiscountTypes count",
+            "uri": "discountType/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+
+
+        "getEventHeatDetails": {
+            "httpMethod": "GET",
+            "description": "Get EventHeatDetails",
+            "uri": "eventHeatDetails/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createEventHeatDetails": {
+            "httpMethod": "POST",
+            "description": "Create EventHeatDetails",
+            "uri": "eventHeatDetails",
+            "responseModel": "getResponse",
+            "parameters": {
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "updateEventHeatDetails": {
+            "httpMethod": "PUT",
+            "description": "Update EventHeatDetails",
+            "uri": "eventHeatDetails/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"]
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "deleteEventHeatDetails": {
+            "httpMethod": "DELETE",
+            "description": "Delete EventHeatDetails",
+            "uri": "eventHeatDetails/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getEventHeatDetailsCount": {
+            "httpMethod": "GET",
+            "description": "Get EventHeatDetails count",
+            "uri": "eventHeatDetails/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+
+        "getEventHeatTypes": {
+            "httpMethod": "GET",
+            "description": "Get EventHeatTypes",
+            "uri": "eventHeatTypes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createEventHeatTypes": {
+            "httpMethod": "POST",
+            "description": "Create EventHeatTypes",
+            "uri": "eventHeatTypes",
+            "responseModel": "getResponse",
+            "parameters": {
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "updateEventHeatTypes": {
+            "httpMethod": "PUT",
+            "description": "Update EventHeatTypes",
+            "uri": "eventHeatTypes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"]
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "deleteEventHeatTypes": {
+            "httpMethod": "DELETE",
+            "description": "Delete EventHeatTypes",
+            "uri": "eventHeatTypes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getEventHeatTypesCount": {
+            "httpMethod": "GET",
+            "description": "Get EventHeatTypes count",
+            "uri": "eventHeatTypes/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getEventReservationLinks": {
+            "httpMethod": "GET",
+            "description": "Get EventReservationLinks",
+            "uri": "eventReservationLinks/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createEventReservationLinks": {
+            "httpMethod": "POST",
+            "description": "Create EventReservationLinks",
+            "uri": "eventReservationLinks",
+            "responseModel": "getResponse",
+            "parameters": {
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "updateEventReservationLinks": {
+            "httpMethod": "PUT",
+            "description": "Update EventReservationLinks",
+            "uri": "eventReservationLinks/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"]
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "deleteEventReservationLinks": {
+            "httpMethod": "DELETE",
+            "description": "Delete EventReservationLinks",
+            "uri": "eventReservationLinks/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getEventReservationLinksCount": {
+            "httpMethod": "GET",
+            "description": "Get EventReservationLinks count",
+            "uri": "eventReservationLinks/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getEventReservations": {
+            "httpMethod": "GET",
+            "description": "Get EventReservations",
+            "uri": "eventReservations/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createEventReservations": {
+            "httpMethod": "POST",
+            "description": "Create EventReservations",
+            "uri": "eventReservations",
+            "responseModel": "getResponse",
+            "parameters": {
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "updateEventReservations": {
+            "httpMethod": "PUT",
+            "description": "Update EventReservations",
+            "uri": "eventReservations/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"]
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "deleteEventReservations": {
+            "httpMethod": "DELETE",
+            "description": "Delete EventReservations",
+            "uri": "eventReservations/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getEventReservationsCount": {
+            "httpMethod": "GET",
+            "description": "Get EventReservations count",
+            "uri": "eventReservations/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+        "getEventReservationTypes": {
+            "httpMethod": "GET",
+            "description": "Get EventReservationTypes",
+            "uri": "eventReservationTypes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createEventReservationTypes": {
+            "httpMethod": "POST",
+            "description": "Create EventReservationTypes",
+            "uri": "eventReservationTypes",
+            "responseModel": "getResponse",
+            "parameters": {
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "updateEventReservationTypes": {
+            "httpMethod": "PUT",
+            "description": "Update EventReservationTypes",
+            "uri": "eventReservationTypes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"]
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "deleteEventReservationTypes": {
+            "httpMethod": "DELETE",
+            "description": "Delete EventReservationTypes",
+            "uri": "eventReservationTypes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getEventReservationTypesCount": {
+            "httpMethod": "GET",
+            "description": "Get EventReservationTypes count",
+            "uri": "eventReservationTypes/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getEventRounds": {
+            "httpMethod": "GET",
+            "description": "Get EventRounds",
+            "uri": "eventRounds/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createEventRounds": {
+            "httpMethod": "POST",
+            "description": "Create EventRounds",
+            "uri": "eventRounds",
+            "responseModel": "getResponse",
+            "parameters": {
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "updateEventRounds": {
+            "httpMethod": "PUT",
+            "description": "Update EventRounds",
+            "uri": "eventRounds/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"]
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "deleteEventRounds": {
+            "httpMethod": "DELETE",
+            "description": "Delete EventRounds",
+            "uri": "eventRounds/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getEventRoundsCount": {
+            "httpMethod": "GET",
+            "description": "Get EventRounds count",
+            "uri": "eventRounds/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getEvents": {
+            "httpMethod": "GET",
+            "description": "Get Events",
+            "uri": "events/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createEvents": {
+            "httpMethod": "POST",
+            "description": "Create Events",
+            "uri": "events",
+            "responseModel": "getResponse",
+            "parameters": {
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "updateEvents": {
+            "httpMethod": "PUT",
+            "description": "Update Events",
+            "uri": "events/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"]
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "deleteEvents": {
+            "httpMethod": "DELETE",
+            "description": "Delete Events",
+            "uri": "events/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getEventsCount": {
+            "httpMethod": "GET",
+            "description": "Get Eventss count",
+            "uri": "events/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getEventStatuses": {
+            "httpMethod": "GET",
+            "description": "Get EventStatuses",
+            "uri": "eventStatuses/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createEventStatuses": {
+            "httpMethod": "POST",
+            "description": "Create EventStatuses",
+            "uri": "eventStatuses",
+            "responseModel": "getResponse",
+            "parameters": {
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "updateEventStatuses": {
+            "httpMethod": "PUT",
+            "description": "Update EventStatuses",
+            "uri": "eventStatuses/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"]
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "deleteEventStatuses": {
+            "httpMethod": "DELETE",
+            "description": "Delete EventStatuses",
+            "uri": "eventStatuses/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getEventStatusesCount": {
+            "httpMethod": "GET",
+            "description": "Get EventStatusess count",
+            "uri": "eventStatuses/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getEventTasks": {
+            "httpMethod": "GET",
+            "description": "Get EventTasks",
+            "uri": "eventTasks/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createEventTasks": {
+            "httpMethod": "POST",
+            "description": "Create EventTasks",
+            "uri": "eventTasks",
+            "responseModel": "getResponse",
+            "parameters": {
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "updateEventTasks": {
+            "httpMethod": "PUT",
+            "description": "Update EventTasks",
+            "uri": "eventTasks/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"]
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "deleteEventTasks": {
+            "httpMethod": "DELETE",
+            "description": "Delete EventTasks",
+            "uri": "eventTasks/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getEventTasksCount": {
+            "httpMethod": "GET",
+            "description": "Get EventTaskss count",
+            "uri": "eventTasks/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getEventTaskTypes": {
+            "httpMethod": "GET",
+            "description": "Get EventTaskTypes",
+            "uri": "eventTaskTypes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createEventTaskTypes": {
+            "httpMethod": "POST",
+            "description": "Create EventTaskTypes",
+            "uri": "eventTaskTypes",
+            "responseModel": "getResponse",
+            "parameters": {
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "updateEventTaskTypes": {
+            "httpMethod": "PUT",
+            "description": "Update EventTaskTypes",
+            "uri": "eventTaskTypes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"]
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "deleteEventTaskTypes": {
+            "httpMethod": "DELETE",
+            "description": "Delete EventTaskTypes",
+            "uri": "eventTaskTypes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getEventTaskTypesCount": {
+            "httpMethod": "GET",
+            "description": "Get EventTaskTypess count",
+            "uri": "eventTaskTypes/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getEventTypes": {
+            "httpMethod": "GET",
+            "description": "Get EventTypes",
+            "uri": "eventTypes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createEventTypes": {
+            "httpMethod": "POST",
+            "description": "Create EventTypes",
+            "uri": "eventTypes",
+            "responseModel": "getResponse",
+            "parameters": {
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "updateEventTypes": {
+            "httpMethod": "PUT",
+            "description": "Update EventTypes",
+            "uri": "eventTypes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"]
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "deleteEventTypes": {
+            "httpMethod": "DELETE",
+            "description": "Delete EventTypes",
+            "uri": "eventTypes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getEventTypesCount": {
+            "httpMethod": "GET",
+            "description": "Get EventTypess count",
+            "uri": "eventTypes/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getGiftCardHistory": {
+            "httpMethod": "GET",
+            "description": "Get GiftCardHistory",
+            "uri": "giftCardHistory/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createGiftCardHistory": {
+            "httpMethod": "POST",
+            "description": "Create GiftCardHistory",
+            "uri": "giftCardHistory",
+            "responseModel": "getResponse",
+            "parameters": {
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "updateGiftCardHistory": {
+            "httpMethod": "PUT",
+            "description": "Update GiftCardHistory",
+            "uri": "giftCardHistory/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"]
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "deleteGiftCardHistory": {
+            "httpMethod": "DELETE",
+            "description": "Delete GiftCardHistory",
+            "uri": "giftCardHistory/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getGiftCardHistoryCount": {
+            "httpMethod": "GET",
+            "description": "Get GiftCardHistorys count",
+            "uri": "giftCardHistory/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getHeatDetails": {
+            "httpMethod": "GET",
+            "description": "Get HeatDetails",
+            "uri": "heatDetails/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createHeatDetails": {
+            "httpMethod": "POST",
+            "description": "Create HeatDetails",
+            "uri": "heatDetails",
+            "responseModel": "getResponse",
+            "parameters": {
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "updateHeatDetails": {
+            "httpMethod": "PUT",
+            "description": "Update HeatDetails",
+            "uri": "heatDetails/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"]
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "deleteHeatDetails": {
+            "httpMethod": "DELETE",
+            "description": "Delete HeatDetails",
+            "uri": "heatDetails/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getHeatDetailsCount": {
+            "httpMethod": "GET",
+            "description": "Get HeatDetailss count",
+            "uri": "heatDetails/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getHeatMain": {
+            "httpMethod": "GET",
+            "description": "Get HeatMain",
+            "uri": "heatMain/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createHeatMain": {
+            "httpMethod": "POST",
+            "description": "Create HeatMain",
+            "uri": "heatMain",
+            "responseModel": "getResponse",
+            "parameters": {
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "updateHeatMain": {
+            "httpMethod": "PUT",
+            "description": "Update HeatMain",
+            "uri": "heatMain/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"]
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "deleteHeatMain": {
+            "httpMethod": "DELETE",
+            "description": "Delete HeatMain",
+            "uri": "heatMain/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getHeatMainCount": {
+            "httpMethod": "GET",
+            "description": "Get HeatMains count",
+            "uri": "heatMain/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+        "getHeatTypes": {
+            "httpMethod": "GET",
+            "description": "Get HeatTypes",
+            "uri": "heatTypes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createHeatTypes": {
+            "httpMethod": "POST",
+            "description": "Create HeatTypes",
+            "uri": "heatTypes",
+            "responseModel": "getResponse",
+            "parameters": {
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "updateHeatTypes": {
+            "httpMethod": "PUT",
+            "description": "Update HeatTypes",
+            "uri": "heatTypes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"]
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "deleteHeatTypes": {
+            "httpMethod": "DELETE",
+            "description": "Delete HeatTypes",
+            "uri": "heatTypes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getHeatTypesCount": {
+            "httpMethod": "GET",
+            "description": "Get HeatTypess count",
+            "uri": "heatTypes/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getMemberships": {
+            "httpMethod": "GET",
+            "description": "Get Memberships",
+            "uri": "memberships/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createMemberships": {
+            "httpMethod": "POST",
+            "description": "Create Memberships",
+            "uri": "memberships",
+            "responseModel": "getResponse",
+            "parameters": {
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "updateMemberships": {
+            "httpMethod": "PUT",
+            "description": "Update Memberships",
+            "uri": "memberships/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"]
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "deleteMemberships": {
+            "httpMethod": "DELETE",
+            "description": "Delete Memberships",
+            "uri": "memberships/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getMembershipsCount": {
+            "httpMethod": "GET",
+            "description": "Get Membershipss count",
+            "uri": "memberships/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getMembershipTypes": {
+            "httpMethod": "GET",
+            "description": "Get MembershipTypes",
+            "uri": "membershipTypes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createMembershipTypes": {
+            "httpMethod": "POST",
+            "description": "Create MembershipTypes",
+            "uri": "membershipTypes",
+            "responseModel": "getResponse",
+            "parameters": {
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "updateMembershipTypes": {
+            "httpMethod": "PUT",
+            "description": "Update MembershipTypes",
+            "uri": "membershipTypes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"]
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "deleteMembershipTypes": {
+            "httpMethod": "DELETE",
+            "description": "Delete MembershipTypes",
+            "uri": "membershipTypes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getMembershipTypesCount": {
+            "httpMethod": "GET",
+            "description": "Get MembershipTypess count",
+            "uri": "membershipTypes/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getPasswords": {
+            "httpMethod": "GET",
+            "description": "Get Passwords",
+            "uri": "passwords/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createPasswords": {
+            "httpMethod": "POST",
+            "description": "Create Passwords",
+            "uri": "passwords",
+            "responseModel": "getResponse",
+            "parameters": {
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "updatePasswords": {
+            "httpMethod": "PUT",
+            "description": "Update Passwords",
+            "uri": "passwords/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"]
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "deletePasswords": {
+            "httpMethod": "DELETE",
+            "description": "Delete Passwords",
+            "uri": "passwords/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getPasswordsCount": {
+            "httpMethod": "GET",
+            "description": "Get Passwordss count",
+            "uri": "passwords/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getPayments": {
+            "httpMethod": "GET",
+            "description": "Get Payments",
+            "uri": "payments/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createPayments": {
+            "httpMethod": "POST",
+            "description": "Create Payments",
+            "uri": "payments",
+            "responseModel": "getResponse",
+            "parameters": {
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "updatePayments": {
+            "httpMethod": "PUT",
+            "description": "Update Payments",
+            "uri": "payments/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"]
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "deletePayments": {
+            "httpMethod": "DELETE",
+            "description": "Delete Payments",
+            "uri": "payments/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getPaymentsCount": {
+            "httpMethod": "GET",
+            "description": "Get Paymentss count",
+            "uri": "payments/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getProcessPayment": {
+            "httpMethod": "GET",
+            "description": "Get ProcessPayment",
+            "uri": "processPayment/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createProcessPayment": {
+            "httpMethod": "POST",
+            "description": "Create ProcessPayment",
+            "uri": "processPayment",
+            "responseModel": "getResponse",
+            "parameters": {
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "updateProcessPayment": {
+            "httpMethod": "PUT",
+            "description": "Update ProcessPayment",
+            "uri": "processPayment/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"]
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "deleteProcessPayment": {
+            "httpMethod": "DELETE",
+            "description": "Delete ProcessPayment",
+            "uri": "processPayment/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getProcessPaymentCount": {
+            "httpMethod": "GET",
+            "description": "Get ProcessPayments count",
+            "uri": "processPayment/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getProductClasses": {
+            "httpMethod": "GET",
+            "description": "Get ProductClasses",
+            "uri": "productClasses/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createProductClasses": {
+            "httpMethod": "POST",
+            "description": "Create ProductClasses",
+            "uri": "productClasses",
+            "responseModel": "getResponse",
+            "parameters": {
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "updateProductClasses": {
+            "httpMethod": "PUT",
+            "description": "Update ProductClasses",
+            "uri": "productClasses/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"]
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "deleteProductClasses": {
+            "httpMethod": "DELETE",
+            "description": "Delete ProductClasses",
+            "uri": "productClasses/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getProductClassesCount": {
+            "httpMethod": "GET",
+            "description": "Get ProductClassess count",
+            "uri": "productClasses/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getProducts": {
+            "httpMethod": "GET",
+            "description": "Get Products",
+            "uri": "products/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createProducts": {
+            "httpMethod": "POST",
+            "description": "Create Products",
+            "uri": "products",
+            "responseModel": "getResponse",
+            "parameters": {
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "updateProducts": {
+            "httpMethod": "PUT",
+            "description": "Update Products",
+            "uri": "products/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"]
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "deleteProducts": {
+            "httpMethod": "DELETE",
+            "description": "Delete Products",
+            "uri": "products/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getProductsCount": {
+            "httpMethod": "GET",
+            "description": "Get Productss count",
+            "uri": "products/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getReservations": {
+            "httpMethod": "GET",
+            "description": "Get Reservations",
+            "uri": "reservations/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createReservations": {
+            "httpMethod": "POST",
+            "description": "Create Reservations",
+            "uri": "reservations",
+            "responseModel": "getResponse",
+            "parameters": {
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "updateReservations": {
+            "httpMethod": "PUT",
+            "description": "Update Reservations",
+            "uri": "reservations/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"]
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "deleteReservations": {
+            "httpMethod": "DELETE",
+            "description": "Delete Reservations",
+            "uri": "reservations/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getReservationsCount": {
+            "httpMethod": "GET",
+            "description": "Get Reservationss count",
+            "uri": "reservations/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getSources": {
+            "httpMethod": "GET",
+            "description": "Get Sources",
+            "uri": "sources/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createSources": {
+            "httpMethod": "POST",
+            "description": "Create Sources",
+            "uri": "sources",
+            "responseModel": "getResponse",
+            "parameters": {
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "updateSources": {
+            "httpMethod": "PUT",
+            "description": "Update Sources",
+            "uri": "sources/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"]
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "deleteSources": {
+            "httpMethod": "DELETE",
+            "description": "Delete Sources",
+            "uri": "sources/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getSourcesCount": {
+            "httpMethod": "GET",
+            "description": "Get Sourcess count",
+            "uri": "sources/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getTaxes": {
+            "httpMethod": "GET",
+            "description": "Get Taxes",
+            "uri": "taxes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createTaxes": {
+            "httpMethod": "POST",
+            "description": "Create Taxes",
+            "uri": "taxes",
+            "responseModel": "getResponse",
+            "parameters": {
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "updateTaxes": {
+            "httpMethod": "PUT",
+            "description": "Update Taxes",
+            "uri": "taxes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"]
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "deleteTaxes": {
+            "httpMethod": "DELETE",
+            "description": "Delete Taxes",
+            "uri": "taxes/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getTaxesCount": {
+            "httpMethod": "GET",
+            "description": "Get Taxess count",
+            "uri": "taxes/count",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+
+
+        "getUsers": {
+            "httpMethod": "GET",
+            "description": "Get Users",
+            "uri": "users/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createUsers": {
+            "httpMethod": "POST",
+            "description": "Create Users",
+            "uri": "users",
+            "responseModel": "getResponse",
+            "parameters": {
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "updateUsers": {
+            "httpMethod": "PUT",
+            "description": "Update Users",
+            "uri": "users/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": ["integer", "string"],
+                    "required": true
+                },
+                "product": {
+                    "sentAs": "productsId",
+                    "location": "json",
+                    "type": ["integer", "string"]
+                },
+                "public": {
+                    "sentAs": "isPublic",
+                    "location": "json",
+                    "type": ["boolean", "string"]
+                }
+            }
+        },
+        "deleteUsers": {
+            "httpMethod": "DELETE",
+            "description": "Delete Users",
+            "uri": "users/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "getUsersCount": {
+            "httpMethod": "GET",
+            "description": "Get Userss count",
+            "uri": "users/count",
             "responseModel": "getResponse",
             "parameters": {
             }
         }
+
+
+
+
+
+
+
+
 
     },
     "models": {

@@ -29,6 +29,98 @@ class Cli extends AbstractCli
     protected $skipDefaults = false;
     protected $logdefault = 'debug';
 
+    protected $moreCommands = [
+        'gendef' => [
+            'help' => 'Generate and show Service Definition for get/post/put/delete operations',
+            'options' => [ ['operation', 'Operation Name', 'N', true ]],
+        ]
+    ];
+
+    public function gendef($options) {
+
+        extract($options);
+        /** @var  $operation */
+        $operationTitleCase = ucfirst($operation);
+
+        $json = "
+        \"get{$operationTitleCase}\": {
+            \"httpMethod\": \"GET\",
+            \"description\": \"Get {$operationTitleCase}\",
+            \"uri\": \"{$operation}/{id}\",
+            \"responseModel\": \"getResponse\",
+            \"parameters\": {
+                \"id\": {
+                    \"location\": \"uri\"
+                }
+            }
+        },
+        \"create{$operationTitleCase}\": {
+            \"httpMethod\": \"POST\",
+            \"description\": \"Create {$operationTitleCase}\",
+            \"uri\": \"{$operation}\",
+            \"responseModel\": \"getResponse\",
+            \"parameters\": {
+                \"product\": {
+                    \"sentAs\": \"productsId\",
+                    \"location\": \"json\",
+                    \"type\": [\"integer\", \"string\"],
+                    \"required\": true
+                },
+                \"public\": {
+                    \"sentAs\": \"isPublic\",
+                    \"location\": \"json\",
+                    \"type\": [\"boolean\", \"string\"]
+                }
+            }
+        },
+        \"update{$operationTitleCase}\": {
+            \"httpMethod\": \"PUT\",
+            \"description\": \"Update {$operationTitleCase}\",
+            \"uri\": \"{$operation}/{id}\",
+            \"responseModel\": \"getResponse\",
+            \"parameters\": {
+                \"id\": {
+                    \"location\": \"uri\",
+                    \"type\": [\"integer\", \"string\"],
+                    \"required\": true
+                },
+                \"product\": {
+                    \"sentAs\": \"productsId\",
+                    \"location\": \"json\",
+                    \"type\": [\"integer\", \"string\"]
+                },
+                \"public\": {
+                    \"sentAs\": \"isPublic\",
+                    \"location\": \"json\",
+                    \"type\": [\"boolean\", \"string\"]
+                }
+            }
+        },
+        \"delete{$operationTitleCase}\": {
+            \"httpMethod\": \"DELETE\",
+            \"description\": \"Delete {$operationTitleCase}\",
+            \"uri\": \"{$operation}/{id}\",
+            \"responseModel\": \"getResponse\",
+            \"parameters\": {
+                \"id\": {
+                    \"location\": \"uri\",
+                    \"required\": true
+                }
+            }
+        },
+        \"get{$operationTitleCase}Count\": {
+            \"httpMethod\": \"GET\",
+            \"description\": \"Get {$operationTitleCase}s count\",
+            \"uri\": \"{$operation}/count\",
+            \"responseModel\": \"getResponse\",
+            \"parameters\": {
+            }
+        },
+        ";
+
+        echo $json;
+    }
+
     public function requestHandler($request)
     {
         if (!$this->quiet) {

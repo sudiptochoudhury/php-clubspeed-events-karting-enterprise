@@ -2,6 +2,11 @@
     "additionalProperties": true,
     "name": "ClubSpeed Events Karting Enterprise API",
     "operations": {
+        "_withAdditionalJSONParameters": {
+            "additionalParameters": {
+                "location": "json"
+            }
+        },
         "getVersion": {
             "httpMethod": "GET",
             "description": "Get Club Speed version",
@@ -142,7 +147,6 @@
                 }
             }
         },
-
         "getBooking": {
             "httpMethod": "GET",
             "description": "Get Bookings",
@@ -155,6 +159,7 @@
             }
         },
         "createBooking": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",
             "description": "Create Booking",
             "uri": "booking",
@@ -175,7 +180,10 @@
                 "public": {
                     "sentAs": "isPublic",
                     "location": "json",
-                    "type": ["boolean", "string"]
+                    "type": [
+                        "boolean",
+                        "string"
+                    ]
                 },
                 "quantity": {
                     "sentAs": "quantityTotal",
@@ -186,6 +194,7 @@
             }
         },
         "updateBooking": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "PUT",
             "description": "Update Booking",
             "uri": "booking/{id}",
@@ -209,7 +218,10 @@
                 "public": {
                     "sentAs": "isPublic",
                     "location": "json",
-                    "type": ["boolean", "string"]
+                    "type": [
+                        "boolean",
+                        "string"
+                    ]
                 },
                 "quantity": {
                     "sentAs": "quantityTotal",
@@ -238,7 +250,6 @@
             "parameters": {
             }
         },
-
         "getBookingAvailability": {
             "httpMethod": "GET",
             "description": "Get all Bookings",
@@ -247,8 +258,6 @@
             "parameters": {
             }
         },
-
-
         "getCheckDetails": {
             "httpMethod": "GET",
             "description": "Get CheckDetails",
@@ -261,15 +270,15 @@
             }
         },
         "createCheckDetails": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",
             "description": "Create CheckDetails",
             "uri": "checkDetails",
             "responseModel": "getResponse",
-            "parameters": {
-
-            }
+            "parameters": {}
         },
         "updateCheckDetails": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "PUT",
             "description": "Update CheckDetails",
             "uri": "checkDetails/{id}",
@@ -302,7 +311,6 @@
             "parameters": {
             }
         },
-
         "getChecks": {
             "httpMethod": "GET",
             "description": "Get Checks",
@@ -315,6 +323,7 @@
             }
         },
         "createChecks": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",
             "description": "Create Checks",
             "uri": "checks",
@@ -323,6 +332,7 @@
             }
         },
         "updateChecks": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "PUT",
             "description": "Update Checks",
             "uri": "checks/{id}",
@@ -356,6 +366,7 @@
             }
         },
         "finalizeCheck": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",
             "description": "Finalize Check",
             "uri": "checks/{id}/finalize",
@@ -382,10 +393,8 @@
                         }
                     }
                 }
-
             }
         },
-
         "getCheckTotals": {
             "httpMethod": "GET",
             "description": "Get CheckTotals",
@@ -398,6 +407,7 @@
             }
         },
         "createCheckTotals": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",
             "description": "Create CheckTotals",
             "uri": "checkTotals",
@@ -435,6 +445,7 @@
             }
         },
         "calculateCheckTotals": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",
             "description": "Create CheckTotals",
             "uri": "checkTotals/virtual",
@@ -479,8 +490,6 @@
             "parameters": {
             }
         },
-
-
         "getCustomers": {
             "httpMethod": "GET",
             "description": "Get Customers",
@@ -493,15 +502,16 @@
             }
         },
         "createCustomers": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",
             "description": "Create Customers",
             "uri": "customers",
             "responseModel": "getResponse",
             "parameters": {
-
             }
         },
         "updateCustomers": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "PUT",
             "description": "Update Customers",
             "uri": "customers/{id}",
@@ -534,8 +544,6 @@
             "parameters": {
             }
         },
-
-
         "getDiscountType": {
             "httpMethod": "GET",
             "description": "Get DiscountType",
@@ -548,15 +556,16 @@
             }
         },
         "createDiscountType": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",
             "description": "Create DiscountType",
             "uri": "discountType",
             "responseModel": "getResponse",
             "parameters": {
-
             }
         },
         "updateDiscountType": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "PUT",
             "description": "Update DiscountType",
             "uri": "discountType/{id}",
@@ -589,10 +598,6 @@
             "parameters": {
             }
         },
-
-
-
-
         "getEventHeatDetails": {
             "httpMethod": "GET",
             "description": "Get EventHeatDetails",
@@ -605,6 +610,7 @@
             }
         },
         "createEventHeatDetails": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",
             "description": "Create EventHeatDetails",
             "uri": "eventHeatDetails",
@@ -613,6 +619,7 @@
             }
         },
         "updateEventHeatDetails": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "PUT",
             "description": "Update EventHeatDetails",
             "uri": "eventHeatDetails/{id}",
@@ -645,9 +652,6 @@
             "parameters": {
             }
         },
-
-
-
         "getEventHeatTypes": {
             "httpMethod": "GET",
             "description": "Get EventHeatTypes",
@@ -660,15 +664,16 @@
             }
         },
         "createEventHeatTypes": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",
             "description": "Create EventHeatTypes",
             "uri": "eventHeatTypes",
             "responseModel": "getResponse",
             "parameters": {
-
             }
         },
         "updateEventHeatTypes": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "PUT",
             "description": "Update EventHeatTypes",
             "uri": "eventHeatTypes/{id}",
@@ -679,6 +684,7 @@
                     "type": ["integer", "string"],
                     "required": true
                 }
+            }
         },
         "deleteEventHeatTypes": {
             "httpMethod": "DELETE",
@@ -700,8 +706,6 @@
             "parameters": {
             }
         },
-
-
         "getEventReservationLinks": {
             "httpMethod": "GET",
             "description": "Get EventReservationLinks",
@@ -714,15 +718,16 @@
             }
         },
         "createEventReservationLinks": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",
             "description": "Create EventReservationLinks",
             "uri": "eventReservationLinks",
             "responseModel": "getResponse",
             "parameters": {
-
             }
         },
         "updateEventReservationLinks": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "PUT",
             "description": "Update EventReservationLinks",
             "uri": "eventReservationLinks/{id}",
@@ -755,8 +760,6 @@
             "parameters": {
             }
         },
-
-
         "getEventReservations": {
             "httpMethod": "GET",
             "description": "Get EventReservations",
@@ -769,15 +772,16 @@
             }
         },
         "createEventReservations": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",
             "description": "Create EventReservations",
             "uri": "eventReservations",
             "responseModel": "getResponse",
             "parameters": {
-
             }
         },
         "updateEventReservations": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "PUT",
             "description": "Update EventReservations",
             "uri": "eventReservations/{id}",
@@ -791,6 +795,7 @@
             }
         },
         "updateEventReservationStatus": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "PUT",
             "description": "Update EventReservation status",
             "uri": "eventReservations/{id}",
@@ -828,7 +833,6 @@
             "parameters": {
             }
         },
-
         "getEventReservationTypes": {
             "httpMethod": "GET",
             "description": "Get EventReservationTypes",
@@ -841,15 +845,16 @@
             }
         },
         "createEventReservationTypes": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",
             "description": "Create EventReservationTypes",
             "uri": "eventReservationTypes",
             "responseModel": "getResponse",
             "parameters": {
-
             }
         },
         "updateEventReservationTypes": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "PUT",
             "description": "Update EventReservationTypes",
             "uri": "eventReservationTypes/{id}",
@@ -882,8 +887,6 @@
             "parameters": {
             }
         },
-
-
         "getEventRounds": {
             "httpMethod": "GET",
             "description": "Get EventRounds",
@@ -896,15 +899,16 @@
             }
         },
         "createEventRounds": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",
             "description": "Create EventRounds",
             "uri": "eventRounds",
             "responseModel": "getResponse",
             "parameters": {
-
             }
         },
         "updateEventRounds": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "PUT",
             "description": "Update EventRounds",
             "uri": "eventRounds/{id}",
@@ -937,8 +941,6 @@
             "parameters": {
             }
         },
-
-
         "getEvents": {
             "httpMethod": "GET",
             "description": "Get Events",
@@ -951,15 +953,16 @@
             }
         },
         "createEvents": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",
             "description": "Create Events",
             "uri": "events",
             "responseModel": "getResponse",
             "parameters": {
-
             }
         },
         "updateEvents": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "PUT",
             "description": "Update Events",
             "uri": "events/{id}",
@@ -992,8 +995,6 @@
             "parameters": {
             }
         },
-
-
         "getEventStatuses": {
             "httpMethod": "GET",
             "description": "Get EventStatuses",
@@ -1006,15 +1007,16 @@
             }
         },
         "createEventStatuses": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",
             "description": "Create EventStatuses",
             "uri": "eventStatuses",
             "responseModel": "getResponse",
             "parameters": {
-
             }
         },
         "updateEventStatuses": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "PUT",
             "description": "Update EventStatuses",
             "uri": "eventStatuses/{id}",
@@ -1047,8 +1049,6 @@
             "parameters": {
             }
         },
-
-
         "getEventTasks": {
             "httpMethod": "GET",
             "description": "Get EventTasks",
@@ -1061,15 +1061,16 @@
             }
         },
         "createEventTasks": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",
             "description": "Create EventTasks",
             "uri": "eventTasks",
             "responseModel": "getResponse",
             "parameters": {
-
             }
         },
         "updateEventTasks": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "PUT",
             "description": "Update EventTasks",
             "uri": "eventTasks/{id}",
@@ -1102,8 +1103,6 @@
             "parameters": {
             }
         },
-
-
         "getEventTaskTypes": {
             "httpMethod": "GET",
             "description": "Get EventTaskTypes",
@@ -1116,15 +1115,16 @@
             }
         },
         "createEventTaskTypes": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",
             "description": "Create EventTaskTypes",
             "uri": "eventTaskTypes",
             "responseModel": "getResponse",
             "parameters": {
-
             }
         },
         "updateEventTaskTypes": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "PUT",
             "description": "Update EventTaskTypes",
             "uri": "eventTaskTypes/{id}",
@@ -1157,8 +1157,6 @@
             "parameters": {
             }
         },
-
-
         "getEventTypes": {
             "httpMethod": "GET",
             "description": "Get EventTypes",
@@ -1171,15 +1169,16 @@
             }
         },
         "createEventTypes": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",
             "description": "Create EventTypes",
             "uri": "eventTypes",
             "responseModel": "getResponse",
             "parameters": {
-
             }
         },
         "updateEventTypes": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "PUT",
             "description": "Update EventTypes",
             "uri": "eventTypes/{id}",
@@ -1212,8 +1211,6 @@
             "parameters": {
             }
         },
-
-
         "getGiftCardHistory": {
             "httpMethod": "GET",
             "description": "Get GiftCardHistory",
@@ -1226,15 +1223,16 @@
             }
         },
         "createGiftCardHistory": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",
             "description": "Create GiftCardHistory",
             "uri": "giftCardHistory",
             "responseModel": "getResponse",
             "parameters": {
-
             }
         },
         "updateGiftCardHistory": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "PUT",
             "description": "Update GiftCardHistory",
             "uri": "giftCardHistory/{id}",
@@ -1267,8 +1265,6 @@
             "parameters": {
             }
         },
-
-
         "getHeatDetails": {
             "httpMethod": "GET",
             "description": "Get HeatDetails",
@@ -1281,15 +1277,16 @@
             }
         },
         "createHeatDetails": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",
             "description": "Create HeatDetails",
             "uri": "heatDetails",
             "responseModel": "getResponse",
             "parameters": {
-
             }
         },
         "updateHeatDetails": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "PUT",
             "description": "Update HeatDetails",
             "uri": "heatDetails/{id}",
@@ -1322,8 +1319,6 @@
             "parameters": {
             }
         },
-
-
         "getHeatMain": {
             "httpMethod": "GET",
             "description": "Get HeatMain",
@@ -1336,15 +1331,16 @@
             }
         },
         "createHeatMain": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",
             "description": "Create HeatMain",
             "uri": "heatMain",
             "responseModel": "getResponse",
             "parameters": {
-
             }
         },
         "updateHeatMain": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "PUT",
             "description": "Update HeatMain",
             "uri": "heatMain/{id}",
@@ -1377,7 +1373,6 @@
             "parameters": {
             }
         },
-
         "getHeatTypes": {
             "httpMethod": "GET",
             "description": "Get HeatTypes",
@@ -1390,15 +1385,16 @@
             }
         },
         "createHeatTypes": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",
             "description": "Create HeatTypes",
             "uri": "heatTypes",
             "responseModel": "getResponse",
             "parameters": {
-
             }
         },
         "updateHeatTypes": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "PUT",
             "description": "Update HeatTypes",
             "uri": "heatTypes/{id}",
@@ -1431,8 +1427,6 @@
             "parameters": {
             }
         },
-
-
         "getMemberships": {
             "httpMethod": "GET",
             "description": "Get Memberships",
@@ -1445,15 +1439,16 @@
             }
         },
         "createMemberships": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",
             "description": "Create Memberships",
             "uri": "memberships",
             "responseModel": "getResponse",
             "parameters": {
-
             }
         },
         "updateMemberships": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "PUT",
             "description": "Update Memberships",
             "uri": "memberships/{id}",
@@ -1486,8 +1481,6 @@
             "parameters": {
             }
         },
-
-
         "getMembershipTypes": {
             "httpMethod": "GET",
             "description": "Get MembershipTypes",
@@ -1500,15 +1493,16 @@
             }
         },
         "createMembershipTypes": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",
             "description": "Create MembershipTypes",
             "uri": "membershipTypes",
             "responseModel": "getResponse",
             "parameters": {
-
             }
         },
         "updateMembershipTypes": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "PUT",
             "description": "Update MembershipTypes",
             "uri": "membershipTypes/{id}",
@@ -1541,8 +1535,6 @@
             "parameters": {
             }
         },
-
-
         "getOmnipayVendors": {
             "httpMethod": "GET",
             "description": "List Vendors",
@@ -1555,6 +1547,7 @@
             }
         },
         "acceptOmnipayPayment": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",
             "description": "Accept Payment (omnipay)",
             "uri": "omnipay/purchase",
@@ -1562,7 +1555,9 @@
             "parameters": {
                 "name": {
                     "location": "json",
-                    "type": ["string"],
+                    "type": [
+                        "string"
+                    ],
                     "required": true
                 },
                 "amount": {
@@ -1589,10 +1584,10 @@
                     "required": true,
                     "type": "object"
                 }
-
             }
         },
         "completeOmnipayPayment": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",
             "description": "Complete Payment (omnipay)",
             "uri": "omnipay/complete",
@@ -1600,10 +1595,8 @@
             "parameters": {
             }
         },
-
-
-
         "generateResetToken": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",
             "description": "Generate Reset Token",
             "uri": "passwords",
@@ -1619,6 +1612,7 @@
             }
         },
         "consumeResetToken": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "PUT",
             "description": "Consume Reset Token",
             "uri": "passwords",
@@ -1634,7 +1628,6 @@
                 }
             }
         },
-
         "getPayments": {
             "httpMethod": "GET",
             "description": "Get Payments",
@@ -1647,15 +1640,16 @@
             }
         },
         "createPayments": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",
             "description": "Create Payments",
             "uri": "payments",
             "responseModel": "getResponse",
             "parameters": {
-
             }
         },
         "updatePayments": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "PUT",
             "description": "Update Payments",
             "uri": "payments/{id}",
@@ -1688,17 +1682,18 @@
             "parameters": {
             }
         },
-
-
         "processPayment": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",
             "description": "Process Payment",
             "uri": "processPayment",
             "responseModel": "getResponse",
             "parameters": {
-               "name": {
+                "name": {
                     "location": "json",
-                    "type": ["string"],
+                    "type": [
+                        "string"
+                    ],
                     "required": true
                 },
                 "options": {
@@ -1735,6 +1730,7 @@
             }
         },
         "updateProcessPayment": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "PUT",
             "description": "Update ProcessPayment",
             "uri": "processPayment/{id}",
@@ -1767,8 +1763,6 @@
             "parameters": {
             }
         },
-
-
         "getProductClasses": {
             "httpMethod": "GET",
             "description": "Get ProductClasses",
@@ -1781,15 +1775,16 @@
             }
         },
         "createProductClasses": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",
             "description": "Create ProductClasses",
             "uri": "productClasses",
             "responseModel": "getResponse",
             "parameters": {
-
             }
         },
         "updateProductClasses": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "PUT",
             "description": "Update ProductClasses",
             "uri": "productClasses/{id}",
@@ -1822,8 +1817,6 @@
             "parameters": {
             }
         },
-
-
         "getProducts": {
             "httpMethod": "GET",
             "description": "Get Products",
@@ -1836,15 +1829,16 @@
             }
         },
         "createProducts": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",
             "description": "Create Products",
             "uri": "products",
             "responseModel": "getResponse",
             "parameters": {
-
             }
         },
         "updateProducts": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "PUT",
             "description": "Update Products",
             "uri": "products/{id}",
@@ -1877,8 +1871,6 @@
             "parameters": {
             }
         },
-
-
         "getReservations": {
             "httpMethod": "GET",
             "description": "Get Reservations",
@@ -1891,15 +1883,16 @@
             }
         },
         "createReservations": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",
             "description": "Create Reservations",
             "uri": "reservations",
             "responseModel": "getResponse",
             "parameters": {
-
             }
         },
         "updateReservations": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "PUT",
             "description": "Update Reservations",
             "uri": "reservations/{id}",
@@ -1932,8 +1925,6 @@
             "parameters": {
             }
         },
-
-
         "getSources": {
             "httpMethod": "GET",
             "description": "Get Sources",
@@ -1946,15 +1937,16 @@
             }
         },
         "createSources": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",
             "description": "Create Sources",
             "uri": "sources",
             "responseModel": "getResponse",
             "parameters": {
-
             }
         },
         "updateSources": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "PUT",
             "description": "Update Sources",
             "uri": "sources/{id}",
@@ -1987,8 +1979,6 @@
             "parameters": {
             }
         },
-
-
         "getTaxes": {
             "httpMethod": "GET",
             "description": "Get Taxes",
@@ -2001,15 +1991,16 @@
             }
         },
         "createTaxes": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",
             "description": "Create Taxes",
             "uri": "taxes",
             "responseModel": "getResponse",
             "parameters": {
-
             }
         },
         "updateTaxes": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "PUT",
             "description": "Update Taxes",
             "uri": "taxes/{id}",
@@ -2042,8 +2033,6 @@
             "parameters": {
             }
         },
-
-
         "getUsers": {
             "httpMethod": "GET",
             "description": "Get Users",
@@ -2056,6 +2045,7 @@
             }
         },
         "createUsers": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",
             "description": "Create Users",
             "uri": "users",
@@ -2064,6 +2054,7 @@
             }
         },
         "updateUsers": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "PUT",
             "description": "Update Users",
             "uri": "users/{id}",
@@ -2096,9 +2087,8 @@
             "parameters": {
             }
         },
-
-
         "createRacer": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",
             "description": "Create as racer",
             "uri": "racers/create",
@@ -2176,8 +2166,8 @@
                 }
             }
         },
-
         "login": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",
             "description": "Login as racer",
             "uri": "racers/login",
@@ -2194,6 +2184,7 @@
             }
         },
         "loginFb": {
+            "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",
             "description": "Login as racer using Facebook",
             "uri": "racers/fb_login",
@@ -2279,10 +2270,6 @@
                 }
             }
         }
-
-
-
-
     },
     "models": {
         "getResponse": {

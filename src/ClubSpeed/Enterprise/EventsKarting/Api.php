@@ -252,10 +252,10 @@ class Api extends ApiForge
             if (is_array($data)) {
                 $filter[$index] = static::filtersArrayFieldValueReplacer($data, $field, $value[$index]);
             } else {
-                if ($data==='field') {
+                $filter[$index] = $data;
+                if ($data === 'field') {
                     $filter[$index] = $field;
-                }
-                if ($data==='value') {
+                } elseif ($data === 'value') {
                     $filter[$index] = $value;
                 }
             }

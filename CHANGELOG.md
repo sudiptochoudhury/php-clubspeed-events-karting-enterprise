@@ -11,3 +11,6 @@
 - Allow additional query parameters in GET methods
 - Add static functions to generate select, filter, order, limit, skip parameters for GET methods
 - Cleanup
+
+### 0.0.4
+- Fix issue with missing operator in for BETWEEN  

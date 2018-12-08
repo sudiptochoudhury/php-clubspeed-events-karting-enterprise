@@ -7,6 +7,11 @@
                 "location": "json"
             }
         },
+        "_withAdditionalQueryParameters": {
+            "additionalParameters": {
+                "location": "query"
+            }
+        },
         "getVersion": {
             "httpMethod": "GET",
             "description": "Get Club Speed version",
@@ -148,6 +153,7 @@
             }
         },
         "getBooking": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get Bookings",
             "uri": "booking/{id}",
@@ -168,13 +174,19 @@
                 "heat": {
                     "sentAs": "heatId",
                     "location": "json",
-                    "type": ["integer", "string"],
+                    "type": [
+                        "integer",
+                        "string"
+                    ],
                     "required": true
                 },
                 "product": {
                     "sentAs": "productsId",
                     "location": "json",
-                    "type": ["integer", "string"],
+                    "type": [
+                        "integer",
+                        "string"
+                    ],
                     "required": true
                 },
                 "public": {
@@ -188,7 +200,10 @@
                 "quantity": {
                     "sentAs": "quantityTotal",
                     "location": "json",
-                    "type": ["integer", "string"],
+                    "type": [
+                        "integer",
+                        "string"
+                    ],
                     "required": true
                 }
             }
@@ -202,18 +217,27 @@
             "parameters": {
                 "id": {
                     "location": "uri",
-                    "type": ["integer", "string"],
+                    "type": [
+                        "integer",
+                        "string"
+                    ],
                     "required": true
                 },
                 "heat": {
                     "sentAs": "heatId",
                     "location": "json",
-                    "type": ["integer", "string"]
+                    "type": [
+                        "integer",
+                        "string"
+                    ]
                 },
                 "product": {
                     "sentAs": "productsId",
                     "location": "json",
-                    "type": ["integer", "string"]
+                    "type": [
+                        "integer",
+                        "string"
+                    ]
                 },
                 "public": {
                     "sentAs": "isPublic",
@@ -226,7 +250,10 @@
                 "quantity": {
                     "sentAs": "quantityTotal",
                     "location": "json",
-                    "type": ["integer", "string"]
+                    "type": [
+                        "integer",
+                        "string"
+                    ]
                 }
             }
         },
@@ -243,6 +270,7 @@
             }
         },
         "getBookingCount": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get Bookings count",
             "uri": "booking/count",
@@ -251,6 +279,7 @@
             }
         },
         "getBookingAvailability": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get all Bookings",
             "uri": "bookingAvailability",
@@ -259,6 +288,7 @@
             }
         },
         "getCheckDetails": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get CheckDetails",
             "uri": "checkDetails/{id}",
@@ -286,7 +316,10 @@
             "parameters": {
                 "id": {
                     "location": "uri",
-                    "type": ["integer", "string"],
+                    "type": [
+                        "integer",
+                        "string"
+                    ],
                     "required": true
                 }
             }
@@ -304,6 +337,7 @@
             }
         },
         "getCheckDetailsCount": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get CheckDetails count",
             "uri": "checkDetails/count",
@@ -312,6 +346,7 @@
             }
         },
         "getChecks": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get Checks",
             "uri": "checks/{id}",
@@ -340,7 +375,10 @@
             "parameters": {
                 "id": {
                     "location": "uri",
-                    "type": ["integer", "string"],
+                    "type": [
+                        "integer",
+                        "string"
+                    ],
                     "required": true
                 }
             }
@@ -358,6 +396,7 @@
             }
         },
         "getChecksCount": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get Checks count",
             "uri": "checks/count",
@@ -396,6 +435,7 @@
             }
         },
         "getCheckTotals": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get CheckTotals",
             "uri": "checkTotals/{id}",
@@ -483,6 +523,7 @@
             }
         },
         "getCheckTotalsCount": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get CheckTotals count",
             "uri": "checkTotals/count",
@@ -491,6 +532,7 @@
             }
         },
         "getCustomers": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get Customers",
             "uri": "customers/{id}",
@@ -519,7 +561,10 @@
             "parameters": {
                 "id": {
                     "location": "uri",
-                    "type": ["integer", "string"],
+                    "type": [
+                        "integer",
+                        "string"
+                    ],
                     "required": true
                 }
             }
@@ -537,6 +582,7 @@
             }
         },
         "getCustomersCount": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get Customers count",
             "uri": "customers/count",
@@ -545,6 +591,7 @@
             }
         },
         "getDiscountType": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get DiscountType",
             "uri": "discountType/{id}",
@@ -573,7 +620,10 @@
             "parameters": {
                 "id": {
                     "location": "uri",
-                    "type": ["integer", "string"],
+                    "type": [
+                        "integer",
+                        "string"
+                    ],
                     "required": true
                 }
             }
@@ -591,6 +641,7 @@
             }
         },
         "getDiscountTypeCount": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get DiscountTypes count",
             "uri": "discountType/count",
@@ -599,6 +650,7 @@
             }
         },
         "getEventHeatDetails": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get EventHeatDetails",
             "uri": "eventHeatDetails/{id}",
@@ -627,7 +679,10 @@
             "parameters": {
                 "id": {
                     "location": "uri",
-                    "type": ["integer", "string"],
+                    "type": [
+                        "integer",
+                        "string"
+                    ],
                     "required": true
                 }
             }
@@ -645,6 +700,7 @@
             }
         },
         "getEventHeatDetailsCount": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get EventHeatDetails count",
             "uri": "eventHeatDetails/count",
@@ -653,6 +709,7 @@
             }
         },
         "getEventHeatTypes": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get EventHeatTypes",
             "uri": "eventHeatTypes/{id}",
@@ -681,7 +738,10 @@
             "parameters": {
                 "id": {
                     "location": "uri",
-                    "type": ["integer", "string"],
+                    "type": [
+                        "integer",
+                        "string"
+                    ],
                     "required": true
                 }
             }
@@ -699,6 +759,7 @@
             }
         },
         "getEventHeatTypesCount": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get EventHeatTypes count",
             "uri": "eventHeatTypes/count",
@@ -707,6 +768,7 @@
             }
         },
         "getEventReservationLinks": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get EventReservationLinks",
             "uri": "eventReservationLinks/{id}",
@@ -735,7 +797,10 @@
             "parameters": {
                 "id": {
                     "location": "uri",
-                    "type": ["integer", "string"],
+                    "type": [
+                        "integer",
+                        "string"
+                    ],
                     "required": true
                 }
             }
@@ -753,6 +818,7 @@
             }
         },
         "getEventReservationLinksCount": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get EventReservationLinks count",
             "uri": "eventReservationLinks/count",
@@ -761,6 +827,7 @@
             }
         },
         "getEventReservations": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get EventReservations",
             "uri": "eventReservations/{id}",
@@ -789,7 +856,10 @@
             "parameters": {
                 "id": {
                     "location": "uri",
-                    "type": ["integer", "string"],
+                    "type": [
+                        "integer",
+                        "string"
+                    ],
                     "required": true
                 }
             }
@@ -803,13 +873,19 @@
             "parameters": {
                 "id": {
                     "location": "uri",
-                    "type": ["integer", "string"],
+                    "type": [
+                        "integer",
+                        "string"
+                    ],
                     "required": true
                 },
                 "statusId": {
                     "sentAs": "status",
                     "location": "json",
-                    "type": ["integer", "string"]
+                    "type": [
+                        "integer",
+                        "string"
+                    ]
                 }
             }
         },
@@ -826,6 +902,7 @@
             }
         },
         "getEventReservationsCount": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get EventReservations count",
             "uri": "eventReservations/count",
@@ -834,6 +911,7 @@
             }
         },
         "getEventReservationTypes": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get EventReservationTypes",
             "uri": "eventReservationTypes/{id}",
@@ -862,7 +940,10 @@
             "parameters": {
                 "id": {
                     "location": "uri",
-                    "type": ["integer", "string"],
+                    "type": [
+                        "integer",
+                        "string"
+                    ],
                     "required": true
                 }
             }
@@ -880,6 +961,7 @@
             }
         },
         "getEventReservationTypesCount": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get EventReservationTypes count",
             "uri": "eventReservationTypes/count",
@@ -888,6 +970,7 @@
             }
         },
         "getEventRounds": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get EventRounds",
             "uri": "eventRounds/{id}",
@@ -916,7 +999,10 @@
             "parameters": {
                 "id": {
                     "location": "uri",
-                    "type": ["integer", "string"],
+                    "type": [
+                        "integer",
+                        "string"
+                    ],
                     "required": true
                 }
             }
@@ -934,6 +1020,7 @@
             }
         },
         "getEventRoundsCount": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get EventRounds count",
             "uri": "eventRounds/count",
@@ -942,6 +1029,7 @@
             }
         },
         "getEvents": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get Events",
             "uri": "events/{id}",
@@ -970,7 +1058,10 @@
             "parameters": {
                 "id": {
                     "location": "uri",
-                    "type": ["integer", "string"],
+                    "type": [
+                        "integer",
+                        "string"
+                    ],
                     "required": true
                 }
             }
@@ -988,6 +1079,7 @@
             }
         },
         "getEventsCount": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get Events count",
             "uri": "events/count",
@@ -996,6 +1088,7 @@
             }
         },
         "getEventStatuses": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get EventStatuses",
             "uri": "eventStatuses/{id}",
@@ -1024,7 +1117,10 @@
             "parameters": {
                 "id": {
                     "location": "uri",
-                    "type": ["integer", "string"],
+                    "type": [
+                        "integer",
+                        "string"
+                    ],
                     "required": true
                 }
             }
@@ -1042,6 +1138,7 @@
             }
         },
         "getEventStatusesCount": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get EventStatuses count",
             "uri": "eventStatuses/count",
@@ -1050,6 +1147,7 @@
             }
         },
         "getEventTasks": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get EventTasks",
             "uri": "eventTasks/{id}",
@@ -1078,7 +1176,10 @@
             "parameters": {
                 "id": {
                     "location": "uri",
-                    "type": ["integer", "string"],
+                    "type": [
+                        "integer",
+                        "string"
+                    ],
                     "required": true
                 }
             }
@@ -1096,6 +1197,7 @@
             }
         },
         "getEventTasksCount": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get EventTasks count",
             "uri": "eventTasks/count",
@@ -1104,6 +1206,7 @@
             }
         },
         "getEventTaskTypes": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get EventTaskTypes",
             "uri": "eventTaskTypes/{id}",
@@ -1132,7 +1235,10 @@
             "parameters": {
                 "id": {
                     "location": "uri",
-                    "type": ["integer", "string"],
+                    "type": [
+                        "integer",
+                        "string"
+                    ],
                     "required": true
                 }
             }
@@ -1150,6 +1256,7 @@
             }
         },
         "getEventTaskTypesCount": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get EventTaskTypes count",
             "uri": "eventTaskTypes/count",
@@ -1158,6 +1265,7 @@
             }
         },
         "getEventTypes": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get EventTypes",
             "uri": "eventTypes/{id}",
@@ -1186,7 +1294,10 @@
             "parameters": {
                 "id": {
                     "location": "uri",
-                    "type": ["integer", "string"],
+                    "type": [
+                        "integer",
+                        "string"
+                    ],
                     "required": true
                 }
             }
@@ -1204,6 +1315,7 @@
             }
         },
         "getEventTypesCount": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get EventTypes count",
             "uri": "eventTypes/count",
@@ -1212,6 +1324,7 @@
             }
         },
         "getGiftCardHistory": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get GiftCardHistory",
             "uri": "giftCardHistory/{id}",
@@ -1240,7 +1353,10 @@
             "parameters": {
                 "id": {
                     "location": "uri",
-                    "type": ["integer", "string"],
+                    "type": [
+                        "integer",
+                        "string"
+                    ],
                     "required": true
                 }
             }
@@ -1258,6 +1374,7 @@
             }
         },
         "getGiftCardHistoryCount": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get GiftCardHistorys count",
             "uri": "giftCardHistory/count",
@@ -1266,6 +1383,7 @@
             }
         },
         "getHeatDetails": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get HeatDetails",
             "uri": "heatDetails/{id}",
@@ -1294,7 +1412,10 @@
             "parameters": {
                 "id": {
                     "location": "uri",
-                    "type": ["integer", "string"],
+                    "type": [
+                        "integer",
+                        "string"
+                    ],
                     "required": true
                 }
             }
@@ -1312,6 +1433,7 @@
             }
         },
         "getHeatDetailsCount": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get HeatDetails count",
             "uri": "heatDetails/count",
@@ -1320,6 +1442,7 @@
             }
         },
         "getHeatMain": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get HeatMain",
             "uri": "heatMain/{id}",
@@ -1348,7 +1471,10 @@
             "parameters": {
                 "id": {
                     "location": "uri",
-                    "type": ["integer", "string"],
+                    "type": [
+                        "integer",
+                        "string"
+                    ],
                     "required": true
                 }
             }
@@ -1366,6 +1492,7 @@
             }
         },
         "getHeatMainCount": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get HeatMains count",
             "uri": "heatMain/count",
@@ -1374,6 +1501,7 @@
             }
         },
         "getHeatTypes": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get HeatTypes",
             "uri": "heatTypes/{id}",
@@ -1402,7 +1530,10 @@
             "parameters": {
                 "id": {
                     "location": "uri",
-                    "type": ["integer", "string"],
+                    "type": [
+                        "integer",
+                        "string"
+                    ],
                     "required": true
                 }
             }
@@ -1420,6 +1551,7 @@
             }
         },
         "getHeatTypesCount": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get HeatTypes count",
             "uri": "heatTypes/count",
@@ -1428,6 +1560,7 @@
             }
         },
         "getMemberships": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get Memberships",
             "uri": "memberships/{id}",
@@ -1456,7 +1589,10 @@
             "parameters": {
                 "id": {
                     "location": "uri",
-                    "type": ["integer", "string"],
+                    "type": [
+                        "integer",
+                        "string"
+                    ],
                     "required": true
                 }
             }
@@ -1474,6 +1610,7 @@
             }
         },
         "getMembershipsCount": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get Memberships count",
             "uri": "memberships/count",
@@ -1482,6 +1619,7 @@
             }
         },
         "getMembershipTypes": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get MembershipTypes",
             "uri": "membershipTypes/{id}",
@@ -1510,7 +1648,10 @@
             "parameters": {
                 "id": {
                     "location": "uri",
-                    "type": ["integer", "string"],
+                    "type": [
+                        "integer",
+                        "string"
+                    ],
                     "required": true
                 }
             }
@@ -1528,6 +1669,7 @@
             }
         },
         "getMembershipTypesCount": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get MembershipTypes count",
             "uri": "membershipTypes/count",
@@ -1536,6 +1678,7 @@
             }
         },
         "getOmnipayVendors": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "List Vendors",
             "uri": "omnipay/{id}",
@@ -1629,6 +1772,7 @@
             }
         },
         "getPayments": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get Payments",
             "uri": "payments/{id}",
@@ -1657,7 +1801,10 @@
             "parameters": {
                 "id": {
                     "location": "uri",
-                    "type": ["integer", "string"],
+                    "type": [
+                        "integer",
+                        "string"
+                    ],
                     "required": true
                 }
             }
@@ -1675,6 +1822,7 @@
             }
         },
         "getPaymentsCount": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get Payments count",
             "uri": "payments/count",
@@ -1738,7 +1886,10 @@
             "parameters": {
                 "id": {
                     "location": "uri",
-                    "type": ["integer", "string"],
+                    "type": [
+                        "integer",
+                        "string"
+                    ],
                     "required": true
                 }
             }
@@ -1756,6 +1907,7 @@
             }
         },
         "getProcessPaymentCount": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get ProcessPayments count",
             "uri": "processPayment/count",
@@ -1764,6 +1916,7 @@
             }
         },
         "getProductClasses": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get ProductClasses",
             "uri": "productClasses/{id}",
@@ -1792,7 +1945,10 @@
             "parameters": {
                 "id": {
                     "location": "uri",
-                    "type": ["integer", "string"],
+                    "type": [
+                        "integer",
+                        "string"
+                    ],
                     "required": true
                 }
             }
@@ -1810,6 +1966,7 @@
             }
         },
         "getProductClassesCount": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get ProductClasses count",
             "uri": "productClasses/count",
@@ -1818,6 +1975,7 @@
             }
         },
         "getProducts": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get Products",
             "uri": "products/{id}",
@@ -1846,7 +2004,10 @@
             "parameters": {
                 "id": {
                     "location": "uri",
-                    "type": ["integer", "string"],
+                    "type": [
+                        "integer",
+                        "string"
+                    ],
                     "required": true
                 }
             }
@@ -1864,6 +2025,7 @@
             }
         },
         "getProductsCount": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get Products count",
             "uri": "products/count",
@@ -1872,6 +2034,7 @@
             }
         },
         "getReservations": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get Reservations",
             "uri": "reservations/{id}",
@@ -1900,7 +2063,10 @@
             "parameters": {
                 "id": {
                     "location": "uri",
-                    "type": ["integer", "string"],
+                    "type": [
+                        "integer",
+                        "string"
+                    ],
                     "required": true
                 }
             }
@@ -1918,6 +2084,7 @@
             }
         },
         "getReservationsCount": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get Reservations count",
             "uri": "reservations/count",
@@ -1926,6 +2093,7 @@
             }
         },
         "getSources": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get Sources",
             "uri": "sources/{id}",
@@ -1954,7 +2122,10 @@
             "parameters": {
                 "id": {
                     "location": "uri",
-                    "type": ["integer", "string"],
+                    "type": [
+                        "integer",
+                        "string"
+                    ],
                     "required": true
                 }
             }
@@ -1972,6 +2143,7 @@
             }
         },
         "getSourcesCount": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get Sources count",
             "uri": "sources/count",
@@ -1980,6 +2152,7 @@
             }
         },
         "getTaxes": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get Taxes",
             "uri": "taxes/{id}",
@@ -2008,7 +2181,10 @@
             "parameters": {
                 "id": {
                     "location": "uri",
-                    "type": ["integer", "string"],
+                    "type": [
+                        "integer",
+                        "string"
+                    ],
                     "required": true
                 }
             }
@@ -2026,6 +2202,7 @@
             }
         },
         "getTaxesCount": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get Taxes count",
             "uri": "taxes/count",
@@ -2034,6 +2211,7 @@
             }
         },
         "getUsers": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get Users",
             "uri": "users/{id}",
@@ -2062,7 +2240,10 @@
             "parameters": {
                 "id": {
                     "location": "uri",
-                    "type": ["integer", "string"],
+                    "type": [
+                        "integer",
+                        "string"
+                    ],
                     "required": true
                 }
             }
@@ -2080,6 +2261,7 @@
             }
         },
         "getUsersCount": {
+            "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
             "description": "Get Users count",
             "uri": "users/count",

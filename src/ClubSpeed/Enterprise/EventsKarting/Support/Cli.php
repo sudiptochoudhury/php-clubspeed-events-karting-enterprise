@@ -32,11 +32,12 @@ class Cli extends AbstractCli
     protected $moreCommands = [
         'gendef' => [
             'help' => 'Generate and show Service Definition for get/post/put/delete operations',
-            'options' => [ ['operation', 'Operation Name', 'N', true ]],
-        ]
+            'options' => [['operation', 'Operation Name', 'N', true]],
+        ],
     ];
 
-    public function gendef($options) {
+    public function gendef($options)
+    {
 
         extract($options);
         /** @var  $operation */
@@ -44,6 +45,7 @@ class Cli extends AbstractCli
 
         $json = "
         \"get{$operationTitleCase}\": {
+            \"extends\": \"_withAdditionalQueryParameters\",
             \"httpMethod\": \"GET\",
             \"description\": \"Get {$operationTitleCase}\",
             \"uri\": \"{$operation}/{id}\",
@@ -55,6 +57,7 @@ class Cli extends AbstractCli
             }
         },
         \"create{$operationTitleCase}\": {
+            \"extends\": \"_withAdditionalJSONParameters\",
             \"httpMethod\": \"POST\",
             \"description\": \"Create {$operationTitleCase}\",
             \"uri\": \"{$operation}\",
@@ -63,6 +66,7 @@ class Cli extends AbstractCli
             }
         },
         \"update{$operationTitleCase}\": {
+            \"extends\": \"_withAdditionalJSONParameters\",
             \"httpMethod\": \"PUT\",
             \"description\": \"Update {$operationTitleCase}\",
             \"uri\": \"{$operation}/{id}\",
@@ -76,6 +80,7 @@ class Cli extends AbstractCli
             }
         },
         \"delete{$operationTitleCase}\": {
+            \"extends\": \"_withAdditionalJSONParameters\",
             \"httpMethod\": \"DELETE\",
             \"description\": \"Delete {$operationTitleCase}\",
             \"uri\": \"{$operation}/{id}\",
@@ -88,6 +93,7 @@ class Cli extends AbstractCli
             }
         },
         \"get{$operationTitleCase}Count\": {
+            \"extends\": \"_withAdditionalQueryParameters\",
             \"httpMethod\": \"GET\",
             \"description\": \"Get {$operationTitleCase}s count\",
             \"uri\": \"{$operation}/count\",
@@ -133,8 +139,7 @@ class Cli extends AbstractCli
         if (!$this->quiet) {
             if ($result['code'] ?? -1 == -1) {
                 $this->success($result);
-            }
-            else {
+            } else {
                 $this->error($result);
             }
         }
@@ -158,52 +163,5 @@ class Cli extends AbstractCli
 
         return $data;
     }
-
-    protected function getRequestPayloadDefaults($commandName, Options $opt) {
-
-        $payload = parent::getRequestPayloadDefaults($commandName, $opt);
-
-        $commandOptions = $this->commandOptions[$commandName];
-
-        $orgDefaults = $this->config['defaults'] ?? [];
-        $selectedDefaults = [$orgDefaults['cc'], $orgDefaults['customer']];
-        $options = $this->getPayloadOptions($opt);
-
-        if (empty($payload)) {
-            $payload = [];//$data;
-        }
-        foreach($selectedDefaults as $defaults) {
-            foreach ($defaults as $key => $val) {
-
-                if (isset($commandOptions[$key])) {
-                    $path = $commandOptions[$key]['path'];
-                    $this->arraySetDotted($payload, $path, $val);
-                }
-            }
-        }
-        return $payload;
-
-    }
-
-/*    protected function setup(Options $options)
-    {
-        parent::setup($options);
-    }
-
-    protected function registerCommands(Options $options)
-    {
-        parent::registerCommands($options);
-    }
-
-    protected function main(Options $options)
-    {
-        $result = parent::main($options);
-    }
-
-    protected function loadOptions(Options $options) {
-        return parent::loadOptions($options);
-    }
-
-*/
 
 }

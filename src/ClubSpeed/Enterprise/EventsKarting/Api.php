@@ -132,11 +132,11 @@ class Api extends ApiForge
      *                                      %%          HAS
      *                                      {IN}        IN (value has to be an indexed array)
      *                                      !{IN},      NOT IN (value has to be an indexed array)
-     *                                      <>          BETWEEN (value has to be an array of 2 values), excludes
+     *                                      ><          BETWEEN (value has to be an array of 2 values), excludes
      *                                                      values from the result
-     *                                      <=>=        INCLUSIVE BETWEEN (same as <> but includes values)
-     *                                      <=>         BETWEEN INCLUDE START includes only start value
-     *                                      <>=         BETWEEN_INCLUDE_END includes only end value
+     *                                      >=<=        INCLUSIVE BETWEEN (same as <> but includes values)
+     *                                      >=<         BETWEEN INCLUDE START includes only start value
+     *                                      ><=         BETWEEN_INCLUDE_END includes only end value
      *
      *                              LOGICAL ROOT OPERATORS
      *                                  &&              AND
@@ -180,10 +180,10 @@ class Api extends ApiForge
             '%' => '$like',
             '!%' => '$notlike',
             '%%' => '$has',
-            '<>' => ['&&' => [['field', '<', 'value'], ['field', '>', 'value']]],
-            '<=>' => ['&&' => [['field', '<=', 'value'], ['field', '>', 'value']]],
-            '<>=' => ['&&' => [['field', '<', 'value'], ['field', '>=', 'value']]],
-            '<=>=' => ['&&' => [['field', '<=', 'value'], ['field', '>=', 'value']]],
+            '><' => ['&&' => [['field', '>', 'value'], ['field', '<', 'value']]],
+            '>=<' => ['&&' => [['field', '>=', 'value'], ['field', '<', 'value']]],
+            '><=' => ['&&' => [['field', '>', 'value'], ['field', '<=', 'value']]],
+            '>=<=' => ['&&' => [['field', '>=', 'value'], ['field', '<=', 'value']]],
 
         ];
 

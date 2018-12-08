@@ -49,18 +49,29 @@ class Api extends ApiForge
      *
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function injectQuery($request, $params = []) {
+    protected function injectQuery($request, $params = [])
+    {
 
         $uri = $request->getUri();
         $query = psr7\parse_query($uri->getQuery());
         $params['key'] = $this->options['api_key'];
         $queryParams = array_merge($params, $query);
-        $request  = $request->withUri($uri->withQuery(Psr7\build_query($queryParams)));
+        $request = $request->withUri($uri->withQuery(Psr7\build_query($queryParams)));
         return $request;
 
     }
 
-    public static function buildQueryEnhancer($filters = [], $sort = [], $limit = null, $skip = null, $properties = []) {
+    /**
+     * @param array $filters
+     * @param array $sort
+     * @param null  $limit
+     * @param null  $skip
+     * @param array $properties
+     *
+     * @return array
+     */
+    public static function buildQueryEnhancer($filters = [], $sort = [], $limit = null, $skip = null, $properties = [])
+    {
         return array_merge(
             static::buildFilters($filters),
             static::buildSort($sort),
@@ -70,12 +81,17 @@ class Api extends ApiForge
         );
     }
 
-    public static function buildPropertiesSelector($properties = []) {
+    /**
+     * @param array $properties
+     *
+     * @return array
+     */
+    public static function buildPropertiesSelector($properties = [])
+    {
         if (!empty($properties)) {
             if (is_array($properties)) {
                 $select = implode(',', array_values($properties));
-            }
-            else {
+            } else {
                 $select = $properties;
             }
             return compact('select');
@@ -131,15 +147,18 @@ class Api extends ApiForge
      *
      * @return array
      */
-    public static function buildFilters($filters = []) {
+    public static function buildFilters($filters = [])
+    {
         $where = [];
         if (!empty($filters)) {
-            $where = static::buildFiltersArray($filters);
+            $where = json_encode(static::buildFiltersArray($filters));
             return compact('where');
         }
         return $where;
     }
-    private static function buildFiltersArray($wheres = []) {
+
+    private static function buildFiltersArray($wheres = [])
+    {
         $where = [];
 
         $rootKeyMap = [
@@ -148,38 +167,38 @@ class Api extends ApiForge
             '!!' => '$not',
         ];
         $operatorsMap = [
-          '<' => '$lt',
-          '<=' => '$lte',
-          '>' => '$gt',
-          '>=' => '$gte',
-          '==' => '$eq',
-          '!=' => '$neq',
-          '{NULL}' => '$is',
-          '!{NULL}' => '$isnot',
-          '{IN}' => '$in',
-          '!{IN}' => '$notin',
-          '%' => '$like',
-          '!%' => '$notlike',
-          '%%' => '$has',
-          '<>' => ['&&' => [['field', '<', 'value'], ['field', '>', 'value']]],
-          '<=>' => ['&&' => [['field', '<=', 'value'], ['field', '>', 'value']]],
-          '<>=' => ['&&' => [['field', '<', 'value'], ['field', '>=', 'value']]],
-          '<=>=' => ['&&' => [['field', '<=', 'value'], ['field', '>=', 'value']]],
+            '<' => '$lt',
+            '<=' => '$lte',
+            '>' => '$gt',
+            '>=' => '$gte',
+            '==' => '$eq',
+            '!=' => '$neq',
+            '{NULL}' => '$is',
+            '!{NULL}' => '$isnot',
+            '{IN}' => '$in',
+            '!{IN}' => '$notin',
+            '%' => '$like',
+            '!%' => '$notlike',
+            '%%' => '$has',
+            '<>' => ['&&' => [['field', '<', 'value'], ['field', '>', 'value']]],
+            '<=>' => ['&&' => [['field', '<=', 'value'], ['field', '>', 'value']]],
+            '<>=' => ['&&' => [['field', '<', 'value'], ['field', '>=', 'value']]],
+            '<=>=' => ['&&' => [['field', '<=', 'value'], ['field', '>=', 'value']]],
 
         ];
 
         if (!empty($wheres) && is_array($wheres)) {
             $keys = array_keys($wheres);
             if (isset($wheres[0]) && !is_array($wheres[0])) {
-                if(!empty($wheres)) {
+                if (!empty($wheres)) {
                     list ($field, $operator, $value) = array_merge($wheres, [null, null]);
                     if (!isset($operatorsMap[$operator])) {
-                      $value = $operator;
-                      $operator = "==";
+                        $value = $operator;
+                        $operator = "==";
                     }
                     $mappedOperator = $operatorsMap[$operator];
                     if (is_array($mappedOperator)) {
-                        foreach($mappedOperator as $rootKey => $params) {
+                        foreach ($mappedOperator as $rootKey => $params) {
                             $params = static::filtersArrayFieldValueReplacer($params, $field, $value);
                             $where[$rootKeyMap[$rootKey]] = static::buildFiltersArray($params);
                         }
@@ -188,21 +207,20 @@ class Api extends ApiForge
                     }
                 }
 
-            }
-            else {
-                foreach($keys as $key) {
-                $item = $wheres[$key];
-                $rootKey = $rootKeyMap[$key] ?? null;
-                if ($rootKey || is_array($item)) {
-                    $filter = static::buildFiltersArray($item);
-                    if ($rootKey) {
-                        $where[$rootKey] = $filter;
-                    } else {
-                        $where = array_merge($where, $filter);
+            } else {
+                foreach ($keys as $key) {
+                    $item = $wheres[$key];
+                    $rootKey = $rootKeyMap[$key] ?? null;
+                    if ($rootKey || is_array($item)) {
+                        $filter = static::buildFiltersArray($item);
+                        if ($rootKey) {
+                            $where[$rootKey] = $filter;
+                        } else {
+                            $where = array_merge($where, $filter);
+                        }
+                        unset($wheres[$key]);
                     }
-                    unset($wheres[$key]);
                 }
-            }
             }
         }
 
@@ -215,7 +233,7 @@ class Api extends ApiForge
         }, false);
         if ($hasNumeric && $hasKey) {
             $newWhere = [];
-            foreach($where as $key => $item) {
+            foreach ($where as $key => $item) {
                 if (!is_numeric($key)) {
                     $item = [$key => $item];
                 }
@@ -227,9 +245,10 @@ class Api extends ApiForge
         return $where;
     }
 
-    private static function filtersArrayFieldValueReplacer($params, $field, $value) {
+    private static function filtersArrayFieldValueReplacer($params, $field, $value)
+    {
         $filter = [];
-        foreach($params as $index => $data) {
+        foreach ($params as $index => $data) {
             if (is_array($data)) {
                 $filter[$index] = static::filtersArrayFieldValueReplacer($data, $field, $value[$index]);
             } else {
@@ -244,12 +263,14 @@ class Api extends ApiForge
 
         return $filter;
     }
+
     /**
      * @param array $orders ['columnName' => 'ASC/DESC',  'columnName2' => 'ASC/DESC']
      *
      * @return array
      */
-    public static function buildSort($orders = []) {
+    public static function buildSort($orders = [])
+    {
         $sort = [];
         if (!is_array($orders)) {
             $orders = [$orders];
@@ -257,30 +278,43 @@ class Api extends ApiForge
         if (!empty($orders)) {
             if (isset($orders[0])) {
                 if (is_array($orders[0])) {
-                    foreach($orders as $items) {
+                    foreach ($orders as $items) {
                         $order = static::buildSort($items);
                         $sort = array_merge($sort, [$order['order']]);
                     }
                 } else {
                     $sort[] = implode(' ', $orders);
                 }
-            }
-            else {
-                foreach($orders as $key => $order) {
-                    $sort[] = implode(' ', [$key, strtoupper($order ?: 'ASC')]);
+            } else {
+                foreach ($orders as $key => $order) {
+                    $sort[] = implode(' ', [$key, strtoupper($order ? : 'ASC')]);
                 }
             }
             return ['order' => implode(',', $sort)];
         }
         return [];
     }
-    public static function buildLimit($limit = null) {
+
+    /**
+     * @param null $limit
+     *
+     * @return array
+     */
+    public static function buildLimit($limit = null)
+    {
         if (!is_null($limit)) {
             return compact('limit');
         }
         return [];
     }
-    public static function buildSkip($skip = null) {
+
+    /**
+     * @param null $skip
+     *
+     * @return array
+     */
+    public static function buildSkip($skip = null)
+    {
         if (!is_null($skip)) {
             return compact('skip');
         }

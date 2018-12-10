@@ -61,6 +61,24 @@ class Api extends ApiForge
 
     }
 
+
+    /**
+     * @param array $filters ['where' => [], 'sort' => [], 'limit' => '', 'skip' => '', 'properties' => []]
+     *
+     * @return array
+     */
+    public function generateFilters($filters = []) {
+
+        $where = $filters['where'] ?? null;
+        $sort = $filters['sort'] ?? null;
+        $limit = $filters['limit'] ?? null;
+        $skip = $filters['skip'] ?? null;
+        $properties = $filters['properties'] ?? null;
+
+        return static::buildQueryEnhancer($filters, $sort, $limit, $skip, $properties);
+
+    }
+
     /**
      * @param array $filters
      * @param array $sort
@@ -272,10 +290,11 @@ class Api extends ApiForge
     public static function buildSort($orders = [])
     {
         $sort = [];
-        if (!is_array($orders)) {
-            $orders = [$orders];
-        }
+
         if (!empty($orders)) {
+            if (!is_array($orders)) {
+                $orders = [$orders];
+            }
             if (isset($orders[0])) {
                 if (is_array($orders[0])) {
                     foreach ($orders as $items) {

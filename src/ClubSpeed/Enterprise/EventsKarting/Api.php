@@ -25,7 +25,6 @@ class Api extends ApiForge
         'client' => [
             'base_uri' => 'http://f1phx.clubspeedtiming.com/api/index.php/',
         ],
-        'log' => false,
         'settings' => [
             'responseHandler' => null,
             'requestHandler' => null,

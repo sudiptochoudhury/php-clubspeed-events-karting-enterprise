@@ -75,7 +75,7 @@ class Api extends ApiForge
         $skip = $filters['skip'] ?? null;
         $properties = $filters['properties'] ?? null;
 
-        return static::buildQueryEnhancer($filters, $sort, $limit, $skip, $properties);
+        return static::buildQueryEnhancer($where, $sort, $limit, $skip, $properties);
 
     }
 
@@ -238,6 +238,11 @@ class Api extends ApiForge
                         }
                         unset($wheres[$key]);
                     }
+                }
+                // this may be because of this structure
+                // [ key => value, ..]
+                if (!empty($wheres)) {
+                    $where = array_merge($wheres);
                 }
             }
         }

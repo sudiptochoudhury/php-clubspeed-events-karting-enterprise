@@ -169,7 +169,9 @@ class Api extends ApiForge
     {
         $where = [];
         if (!empty($filters)) {
-            $where = json_encode(static::buildFiltersArray($filters));
+            $arr = static::buildFiltersArray($filters);
+            $arrSanitized = static::sanitizeArray($arr);
+            $where = json_encode($arrSanitized);
             return compact('where');
         }
         return $where;
@@ -247,13 +249,8 @@ class Api extends ApiForge
             }
         }
 
-        $keys = array_keys($where);
-        $hasNumeric = array_reduce($keys, function ($c, $k) {
-            return $c || is_numeric($k);
-        }, false);
-        $hasKey = array_reduce($keys, function ($c, $k) {
-            return $c || !is_numeric($k);
-        }, false);
+        $hasNumeric = static::hasNumeric($where);
+        $hasKey = static::hasKeys($where);
         if ($hasNumeric && $hasKey) {
             $newWhere = [];
             foreach ($where as $key => $item) {
@@ -264,10 +261,41 @@ class Api extends ApiForge
             }
             $where = $newWhere;
         }
-
         return $where;
     }
 
+    private static function sanitizeArray($arr) {
+
+        $hasNumeric = static::hasNumeric($arr);
+        $hasKey = static::hasKeys($arr);
+        if ($hasNumeric && !$hasKey) {
+
+            $newArr = [];
+            foreach ($arr as $item) {
+                $itemHasKeys = static::hasKeys($item);
+                if ($itemHasKeys) {
+                    foreach($item as $itemKey => $itemPart) {
+                        $newArr[$itemKey] = $itemPart;
+                    }
+                }
+            }
+            $arr = $newArr;
+        }
+        return $arr;
+
+    }
+    private static function hasNumeric($arr) {
+        $keys = array_keys($arr);
+        return array_reduce($keys, function ($c, $k) {
+            return $c || is_numeric($k);
+        }, false);
+    }
+    private static function hasKeys($arr) {
+        $keys = array_keys($arr);
+        return array_reduce($keys, function ($c, $k) {
+            return $c || !is_numeric($k);
+        }, false);
+    }
     private static function filtersArrayFieldValueReplacer($params, $field, $value)
     {
         $filter = [];

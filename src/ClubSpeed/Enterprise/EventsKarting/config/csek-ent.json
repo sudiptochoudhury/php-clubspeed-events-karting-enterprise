@@ -415,10 +415,16 @@
                     "location": "uri",
                     "required": true
                 },
+                "sendCustomerReceiptEmail": {
+                    "type": "boolean",
+                    "location": "json",
+                    "required": false,
+                    "default": false
+                },
                 "details": {
                     "type": "array",
                     "location": "json",
-                    "required": true,
+                    "required": false,
                     "items": {
                         "type": "object",
                         "required": true,
@@ -1788,7 +1794,7 @@
             "httpMethod": "POST",
             "description": "Create Payments",
             "uri": "payments",
-            "responseModel": "getResponse",
+            "responseModel": "createPayments",
             "parameters": {
             }
         },
@@ -2458,6 +2464,12 @@
             "type": "object",
             "additionalProperties": {
                 "location": "json"
+            }
+        },
+        "createPayments": {
+            "type": "object",
+            "additionalProperties": {
+                "location": "body"
             }
         }
     }

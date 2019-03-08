@@ -1341,6 +1341,18 @@
                 }
             }
         },
+        "getGiftCardsHistory": {
+            "extends": "_withAdditionalQueryParameters",
+            "httpMethod": "GET",
+            "description": "Get GiftCardsHistory",
+            "uri": "giftCardHistory",
+            "responseModel": "getResponse",
+            "parameters": {
+                "where": {
+                    "location": "uri"
+                }
+            }
+        },
         "createGiftCardHistory": {
             "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",

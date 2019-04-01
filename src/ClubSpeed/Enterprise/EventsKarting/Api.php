@@ -23,7 +23,7 @@ class Api extends ApiForge
     protected $DEFAULTS = [
         'api_key' => '',
         'client' => [
-            'base_uri' => 'http://f1phx.clubspeedtiming.com/api/index.php/',
+            'base_uri' => '{{base_uri}}',
         ],
         'log' => false,
         'settings' => [

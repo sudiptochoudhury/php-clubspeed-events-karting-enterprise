@@ -1,5 +1,8 @@
 ### Changelog
 
+### 0.0.8
+- Added `getGiftCardsHistory` endpoint  
+
 ### 0.0.7
 - Easier way to set `base_uri` e.g., `new Api(['api_key' => 'xxxx', 'base_uri' => 'http://...']);`  
 

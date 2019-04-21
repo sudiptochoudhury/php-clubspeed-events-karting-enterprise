@@ -1,5 +1,8 @@
 ### Changelog
 
+### 0.0.9
+- Make `sendCustomerReceiptEmail` of `finalizeCheck` optional
+
 ### 0.0.8
 - Added `getGiftCardsHistory` endpoint  
 

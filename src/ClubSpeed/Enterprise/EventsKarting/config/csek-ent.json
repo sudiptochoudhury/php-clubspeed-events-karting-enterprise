@@ -418,8 +418,7 @@
                 "sendCustomerReceiptEmail": {
                     "type": "boolean",
                     "location": "json",
-                    "required": false,
-                    "default": false
+                    "required": false
                 },
                 "details": {
                     "type": "array",

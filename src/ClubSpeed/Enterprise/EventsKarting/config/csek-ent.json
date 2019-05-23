@@ -430,9 +430,6 @@
                         "properties": {
                             "checkDetailId": {
                                 "required": true
-                            },
-                            "heatId": {
-                                "required": true
                             }
                         }
                     }

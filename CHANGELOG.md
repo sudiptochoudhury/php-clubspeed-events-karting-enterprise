@@ -1,7 +1,10 @@
 ### Changelog
 
-### 0.0.10 - 1 July 2019
+### 0.0.11 - 1 July 2019
 - Add new Response Model ([status:integer, body:\GuzzleHttp\Psr7\Stream]) for string responses
+
+### 0.0.10 - 23 May 2019
+- `heatId` is not available for `finalize` when purchasing gift cards.
 
 ### 0.0.9
 - Make `sendCustomerReceiptEmail` of `finalizeCheck` optional

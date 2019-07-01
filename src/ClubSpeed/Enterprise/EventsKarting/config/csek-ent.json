@@ -1947,7 +1947,7 @@
             "httpMethod": "POST",
             "description": "Create ProductClasses",
             "uri": "productClasses",
-            "responseModel": "getResponse",
+            "responseModel": "fullResponse",
             "parameters": {
             }
         },
@@ -2480,6 +2480,27 @@
             "additionalProperties": {
                 "location": "body"
             }
+        },
+        "fullResponse": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "location": "statusCode",
+              "type": "integer"
+            },
+            "reason": {
+              "location": "reasonPhrase",
+              "type": "string"
+            },
+            "header": {
+              "location": "header",
+              "type": "string"
+            },
+            "body": {
+              "location": "body",
+              "type": "string"
+            }
+          }
         }
     }
 }

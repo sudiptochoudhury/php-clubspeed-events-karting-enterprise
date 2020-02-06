@@ -304,7 +304,7 @@
             "httpMethod": "POST",
             "description": "Create CheckDetails",
             "uri": "checkDetails",
-            "responseModel": "getResponse",
+            "responseModel": "fullResponse",
             "parameters": {}
         },
         "updateCheckDetails": {

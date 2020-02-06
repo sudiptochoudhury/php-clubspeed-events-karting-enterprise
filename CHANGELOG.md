@@ -1,5 +1,8 @@
 ### Changelog
 
+### 0.0.12 - 6 Feb 2019
+- Change response for createCheckDetails method
+
 ### 0.0.11 - 1 July 2019
 - Add new Response Model ([status:integer, body:\GuzzleHttp\Psr7\Stream]) for string responses
 

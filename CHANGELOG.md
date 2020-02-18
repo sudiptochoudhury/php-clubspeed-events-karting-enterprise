@@ -1,6 +1,9 @@
 ### Changelog
 
-### 0.0.12 - 6 Feb 2019
+### 0.0.13 - 19 Feb 2020
+- Remove required parameters from most of the registration fields
+
+### 0.0.12 - 6 Feb 2020
 - Change response for createCheckDetails method
 
 ### 0.0.11 - 1 July 2019

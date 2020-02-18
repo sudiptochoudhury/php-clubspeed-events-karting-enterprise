@@ -2292,74 +2292,58 @@
             "responseModel": "getResponse",
             "parameters": {
                 "racername": {
-                    "location": "json",
-                    "required": true
+                    "location": "json"
                 },
                 "email": {
-                    "location": "json",
-                    "required": true
+                    "location": "json"
                 },
                 "password": {
-                    "location": "json",
-                    "required": true
+                    "location": "json"
                 },
                 "donotemail": {
-                    "location": "json",
-                    "required": true
+                    "location": "json"
                 },
                 "firstname": {
-                    "location": "json",
-                    "required": true
+                    "location": "json"
                 },
                 "lastname": {
-                    "location": "json",
-                    "required": true
+                    "location": "json"
                 },
                 "birthdate": {
-                    "location": "json",
-                    "required": true
+                    "location": "json"
                 },
                 "gender": {
-                    "location": "json",
-                    "required": true
+                    "location": "json"
                 },
                 "mobilephone": {
-                    "location": "json",
-                    "required": true
+                    "location": "json"
                 },
                 "address": {
                     "sentAs": "Address",
-                    "location": "json",
-                    "required": true
+                    "location": "json"
                 },
                 "address2": {
                     "sentAs": "Address2",
-                    "location": "json",
-                    "required": true
+                    "location": "json"
                 },
                 "city": {
                     "sentAs": "City",
-                    "location": "json",
-                    "required": true
+                    "location": "json"
                 },
                 "country": {
                     "sentAs": "Country",
-                    "location": "json",
-                    "required": true
+                    "location": "json"
                 },
                 "howdidyouhearaboutus": {
-                    "location": "json",
-                    "required": true
+                    "location": "json"
                 },
                 "state": {
                     "sentAs": "State",
-                    "location": "json",
-                    "required": true
+                    "location": "json"
                 },
                 "zip": {
                     "sentAs": "Zip",
-                    "location": "json",
-                    "required": true
+                    "location": "json"
                 }
             }
         },
@@ -2388,28 +2372,23 @@
             "responseModel": "getResponse",
             "parameters": {
                 "email": {
-                    "location": "json",
-                    "required": true
+                    "location": "json"
                 },
                 "facebookId": {
                     "location": "json",
                     "required": true
                 },
                 "facebookToken": {
-                    "location": "json",
-                    "required": true
+                    "location": "json"
                 },
                 "facebookAllowEmail": {
-                    "location": "json",
-                    "required": true
+                    "location": "json"
                 },
                 "facebookAllowPost": {
-                    "location": "json",
-                    "required": true
+                    "location": "json"
                 },
                 "facebookEnabled": {
-                    "location": "json",
-                    "required": true
+                    "location": "json"
                 },
                 "facebookExpiresIn": {
                     "location": "json"

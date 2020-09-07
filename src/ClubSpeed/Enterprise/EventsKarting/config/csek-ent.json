@@ -651,17 +651,35 @@
             "parameters": {
             }
         },
-        "getEventHeatDetails": {
+        "__eventHeatDetails": {
             "extends": "_withAdditionalQueryParameters",
-            "httpMethod": "GET",
-            "description": "Get EventHeatDetails",
-            "uri": "eventHeatDetails/{id}",
+            "uri": "eventHeatDetails",
+            "responseModel": "getResponse"
+        },
+        "__eventHeatDetail": {
+            "extends": "_withAdditionalQueryParameters",
+            "uri": "eventHeatDetails/{customerId}/{eventId}",
             "responseModel": "getResponse",
             "parameters": {
-                "id": {
-                    "location": "uri"
+                "customerId": {
+                    "location": "uri",
+                    "required": true
+                },
+                "eventId": {
+                    "location": "uri",
+                    "required": true
                 }
             }
+        },
+        "getEventHeatDetail": {
+            "extends": "__eventHeatDetail",
+            "httpMethod": "GET",
+            "description": "Get Single Event Heat Details"
+        },
+        "getEventHeatDetails": {
+            "extends": "__eventHeatDetails",
+            "httpMethod": "GET",
+            "description": "Get Event Heat Details"
         },
         "createEventHeatDetails": {
             "extends": "_withAdditionalJSONParameters",
@@ -672,34 +690,23 @@
             "parameters": {
             }
         },
-        "updateEventHeatDetails": {
-            "extends": "_withAdditionalJSONParameters",
+        "updateEventHeatDetail": {
+            "extends": "__eventHeatDetail",
             "httpMethod": "PUT",
-            "description": "Update EventHeatDetails",
-            "uri": "eventHeatDetails/{id}",
-            "responseModel": "getResponse",
-            "parameters": {
-                "id": {
-                    "location": "uri",
-                    "type": [
-                        "integer",
-                        "string"
-                    ],
-                    "required": true
-                }
-            }
+            "description": "Update Single Event Heat Details"
+        },
+        "updateEventHeatDetails": {
+            "extends": "__eventHeatDetails",
+            "httpMethod": "PUT",
+            "description": "Update Event Heat Details"
+        },
+        "deleteEventHeatDetail": {
+            "extends": "__eventHeatDetail",
+            "httpMethod": "DELETE",
+            "description": "Delete Single Event Heat Details"
         },
         "deleteEventHeatDetails": {
-            "httpMethod": "DELETE",
-            "description": "Delete EventHeatDetails",
-            "uri": "eventHeatDetails/{id}",
-            "responseModel": "getResponse",
-            "parameters": {
-                "id": {
-                    "location": "uri",
-                    "required": true
-                }
-            }
+            "extends": "deleteEventHeatDetail"
         },
         "getEventHeatDetailsCount": {
             "extends": "_withAdditionalQueryParameters",
@@ -1397,18 +1404,37 @@
             "parameters": {
             }
         },
-        "getHeatDetails": {
+        "__heatDetails": {
             "extends": "_withAdditionalQueryParameters",
-            "httpMethod": "GET",
-            "description": "Get HeatDetails",
-            "uri": "heatDetails/{id}",
+            "uri": "heatDetails",
+            "responseModel": "getResponse"
+        },
+        "__heatDetail": {
+            "extends": "_withAdditionalQueryParameters",
+            "uri": "heatDetails/{heatId}/{customerId}",
             "responseModel": "getResponse",
             "parameters": {
-                "id": {
-                    "location": "uri"
+                "customerId": {
+                    "location": "uri",
+                    "required": true
+                },
+                "heatId": {
+                    "location": "uri",
+                    "required": true
                 }
             }
         },
+        "getHeatDetail": {
+            "extends": "__heatDetail",
+            "httpMethod": "GET",
+            "description": "Get Single Heat Details"
+        },
+        "getHeatDetails": {
+            "extends": "__heatDetails",
+            "httpMethod": "GET",
+            "description": "Get Heat Details"
+        },
+
         "createHeatDetails": {
             "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",
@@ -1418,35 +1444,25 @@
             "parameters": {
             }
         },
-        "updateHeatDetails": {
-            "extends": "_withAdditionalJSONParameters",
+        "updateHeatDetail": {
+            "extends": "__heatDetail",
             "httpMethod": "PUT",
-            "description": "Update HeatDetails",
-            "uri": "heatDetails/{id}",
-            "responseModel": "getResponse",
-            "parameters": {
-                "id": {
-                    "location": "uri",
-                    "type": [
-                        "integer",
-                        "string"
-                    ],
-                    "required": true
-                }
-            }
+            "description": "Update Single Heat Details"
+        },
+        "updateHeatDetails": {
+            "extends": "__heatDetails",
+            "httpMethod": "PUT",
+            "description": "Update Heat Details"
+        },
+        "deleteHeatDetail": {
+            "extends": "__heatDetail",
+            "httpMethod": "DELETE",
+            "description": "Delete Heat Details"
         },
         "deleteHeatDetails": {
-            "httpMethod": "DELETE",
-            "description": "Delete HeatDetails",
-            "uri": "heatDetails/{id}",
-            "responseModel": "getResponse",
-            "parameters": {
-                "id": {
-                    "location": "uri",
-                    "required": true
-                }
-            }
+            "extends": "deleteHeatDetail"
         },
+
         "getHeatDetailsCount": {
             "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",
@@ -1574,17 +1590,35 @@
             "parameters": {
             }
         },
-        "getMemberships": {
+        "__memberships": {
             "extends": "_withAdditionalQueryParameters",
-            "httpMethod": "GET",
-            "description": "Get Memberships",
-            "uri": "memberships/{id}",
+            "uri": "memberships",
+            "responseModel": "getResponse"
+        },
+        "__membership": {
+            "extends": "_withAdditionalQueryParameters",
+            "uri": "memberships/{customerId}/{membershipTypeId}",
             "responseModel": "getResponse",
             "parameters": {
-                "id": {
-                    "location": "uri"
+                "customerId": {
+                    "location": "uri",
+                    "required": true
+                },
+                "membershipTypeId": {
+                    "location": "uri",
+                    "required": true
                 }
             }
+        },
+        "getMembership": {
+            "extends": "__membership",
+            "httpMethod": "GET",
+            "description": "Get Single Membership"
+        },
+        "getMemberships": {
+            "extends": "__memberships",
+            "httpMethod": "GET",
+            "description": "Get Memberships"
         },
         "createMemberships": {
             "extends": "_withAdditionalJSONParameters",
@@ -1595,34 +1629,23 @@
             "parameters": {
             }
         },
-        "updateMemberships": {
-            "extends": "_withAdditionalJSONParameters",
+        "updateMembership": {
+            "extends": "__membership",
             "httpMethod": "PUT",
-            "description": "Update Memberships",
-            "uri": "memberships/{id}",
-            "responseModel": "getResponse",
-            "parameters": {
-                "id": {
-                    "location": "uri",
-                    "type": [
-                        "integer",
-                        "string"
-                    ],
-                    "required": true
-                }
-            }
+            "description": "Update Single Membership"
+        },
+        "updateMemberships": {
+            "extends": "__memberships",
+            "httpMethod": "PUT",
+            "description": "Update Memberships"
+        },
+        "deleteMembership": {
+            "extends": "__membership",
+            "httpMethod": "DELETE",
+            "description": "Delete Single Membership"
         },
         "deleteMemberships": {
-            "httpMethod": "DELETE",
-            "description": "Delete Memberships",
-            "uri": "memberships/{id}",
-            "responseModel": "getResponse",
-            "parameters": {
-                "id": {
-                    "location": "uri",
-                    "required": true
-                }
-            }
+            "extends": "deleteMembership"
         },
         "getMembershipsCount": {
             "extends": "_withAdditionalQueryParameters",
@@ -2461,25 +2484,25 @@
             }
         },
         "fullResponse": {
-          "type": "object",
-          "properties": {
-            "status": {
-              "location": "statusCode",
-              "type": "integer"
-            },
-            "reason": {
-              "location": "reasonPhrase",
-              "type": "string"
-            },
-            "header": {
-              "location": "header",
-              "type": "string"
-            },
-            "body": {
-              "location": "body",
-              "type": "string"
+            "type": "object",
+            "properties": {
+                "status": {
+                    "location": "statusCode",
+                    "type": "integer"
+                },
+                "reason": {
+                    "location": "reasonPhrase",
+                    "type": "string"
+                },
+                "header": {
+                    "location": "header",
+                    "type": "string"
+                },
+                "body": {
+                    "location": "body",
+                    "type": "string"
+                }
             }
-          }
         }
     }
 }

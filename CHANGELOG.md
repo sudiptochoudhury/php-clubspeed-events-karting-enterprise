@@ -1,7 +1,21 @@
 ### Changelog
 
+
+### 0.0.14 - 7 Sep 2020
+- Fix endpoints having composite primary keys 
+    - /heatDetails 
+        - added: getHeatDetail, updateHeatDetail, deleteHeatDetail
+        - modified: getHeatDetails, updateHeatDetails, deleteHeatDetails  
+    - /eventHeatDetails 
+        - added: getEventHeatDetail, updateEventHeatDetail, deleteEventHeatDetail
+        - modified: getEventHeatDetails, updateEventHeatDetails, deleteEventHeatDetails  
+    - /memberships 
+        - added: getMembership, updateMembership, deleteMembership
+        - modified: getMemberships, updateMemberships, deleteMemberships       
+
+
 ### 0.0.13 - 19 Feb 2020
-- Remove required parameters from most of the registration fields
+- Remove required parameter from most of the registration fields
 
 ### 0.0.12 - 6 Feb 2020
 - Change response for createCheckDetails method

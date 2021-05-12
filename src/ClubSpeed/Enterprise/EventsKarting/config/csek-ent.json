@@ -1484,6 +1484,13 @@
                 }
             }
         },
+        "getHeatsMain": {
+            "extends": "_withAdditionalQueryParameters",
+            "httpMethod": "GET",
+            "description": "Get HeatMain",
+            "uri": "heatMain",
+            "responseModel": "getResponse"
+        },
         "createHeatMain": {
             "extends": "_withAdditionalJSONParameters",
             "httpMethod": "POST",

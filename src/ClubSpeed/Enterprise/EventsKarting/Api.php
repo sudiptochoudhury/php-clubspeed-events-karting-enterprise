@@ -3,7 +3,7 @@
 namespace SudiptoChoudhury\ClubSpeed\Enterprise\EventsKarting;
 
 use SudiptoChoudhury\Support\Forge\Api\Client as ApiForge;
-use GuzzleHttp\Psr7;
+use GuzzleHttp\Psr7\Query;
 use GuzzleHttp\Psr7\Request;
 
 /**
@@ -54,10 +54,10 @@ class Api extends ApiForge
     {
 
         $uri = $request->getUri();
-        $query = psr7\parse_query($uri->getQuery());
+        $query = Query::parse($uri->getQuery());
         $params['key'] = $this->options['api_key'];
         $queryParams = array_merge($params, $query);
-        $request = $request->withUri($uri->withQuery(Psr7\build_query($queryParams)));
+        $request = $request->withUri($uri->withQuery(Query::build($queryParams)));
         return $request;
 
     }

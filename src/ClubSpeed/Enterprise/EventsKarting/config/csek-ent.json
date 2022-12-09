@@ -852,7 +852,7 @@
             "httpMethod": "POST",
             "description": "Create EventReservations",
             "uri": "eventReservations",
-            "responseModel": "getResponse",
+            "responseModel": "responseBody",
             "parameters": {
             }
         },

@@ -1,6 +1,6 @@
 ### Changelog
 
-### 0.0.15 - 15 Dec 2022
+### 0.0.15 - 13 Dec 2022
 - Fix responseModel to fullResponse for createEventReservations, createPayments, createHeatMain, createEventReservationLinks
 - Fix responseModel to fullResponse for all *Count operations
 

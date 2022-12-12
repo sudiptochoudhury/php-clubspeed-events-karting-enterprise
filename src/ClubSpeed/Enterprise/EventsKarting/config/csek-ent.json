@@ -793,7 +793,7 @@
             "httpMethod": "POST",
             "description": "Create EventReservationLinks",
             "uri": "eventReservationLinks",
-            "responseModel": "getResponse",
+            "responseModel": "fullResponse",
             "parameters": {
             }
         },

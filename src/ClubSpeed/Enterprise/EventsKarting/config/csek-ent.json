@@ -1496,7 +1496,7 @@
             "httpMethod": "POST",
             "description": "Create HeatMain",
             "uri": "heatMain",
-            "responseModel": "getResponse",
+            "responseModel": "fullResponse",
             "parameters": {
             }
         },
@@ -1833,7 +1833,7 @@
             "httpMethod": "POST",
             "description": "Create Payments",
             "uri": "payments",
-            "responseModel": "responseBody",
+            "responseModel": "fullResponse",
             "parameters": {
             }
         },

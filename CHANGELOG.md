@@ -1,11 +1,14 @@
 ### Changelog
 
+### 0.0.15 - 15 Dec 2022
+- Fix responseModel to fullResponse for createEventReservations, createPayments, createHeatMain, createEventReservationLinks
+- Fix responseModel to fullResponse for all *Count operations
 
 ### 0.0.14 - 7 Sep 2020
 - Fix endpoints having composite primary keys 
     - /heatDetails 
         - added: getHeatDetail, updateHeatDetail, deleteHeatDetail
-        - modified: getHeatDetails, updateHeatDetails, deleteHeatDetails  
+          - modified: getHeatDetails, updateHeatDetails, deleteHeatDetails  
     - /eventHeatDetails 
         - added: getEventHeatDetail, updateEventHeatDetail, deleteEventHeatDetail
         - modified: getEventHeatDetails, updateEventHeatDetails, deleteEventHeatDetails  

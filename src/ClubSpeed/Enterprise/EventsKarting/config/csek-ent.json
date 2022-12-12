@@ -274,7 +274,7 @@
             "httpMethod": "GET",
             "description": "Get Bookings count",
             "uri": "booking/count",
-            "responseModel": "getResponse",
+            "responseModel": "fullResponse",
             "parameters": {
             }
         },
@@ -341,7 +341,7 @@
             "httpMethod": "GET",
             "description": "Get CheckDetails count",
             "uri": "checkDetails/count",
-            "responseModel": "getResponse",
+            "responseModel": "fullResponse",
             "parameters": {
             }
         },
@@ -400,7 +400,7 @@
             "httpMethod": "GET",
             "description": "Get Checks count",
             "uri": "checks/count",
-            "responseModel": "getResponse",
+            "responseModel": "fullResponse",
             "parameters": {
             }
         },
@@ -529,7 +529,7 @@
             "httpMethod": "GET",
             "description": "Get CheckTotals count",
             "uri": "checkTotals/count",
-            "responseModel": "getResponse",
+            "responseModel": "fullResponse",
             "parameters": {
             }
         },
@@ -588,7 +588,7 @@
             "httpMethod": "GET",
             "description": "Get Customers count",
             "uri": "customers/count",
-            "responseModel": "getResponse",
+            "responseModel": "fullResponse",
             "parameters": {
             }
         },
@@ -647,7 +647,7 @@
             "httpMethod": "GET",
             "description": "Get DiscountTypes count",
             "uri": "discountType/count",
-            "responseModel": "getResponse",
+            "responseModel": "fullResponse",
             "parameters": {
             }
         },
@@ -713,7 +713,7 @@
             "httpMethod": "GET",
             "description": "Get EventHeatDetails count",
             "uri": "eventHeatDetails/count",
-            "responseModel": "getResponse",
+            "responseModel": "fullResponse",
             "parameters": {
             }
         },
@@ -772,7 +772,7 @@
             "httpMethod": "GET",
             "description": "Get EventHeatTypes count",
             "uri": "eventHeatTypes/count",
-            "responseModel": "getResponse",
+            "responseModel": "fullResponse",
             "parameters": {
             }
         },
@@ -831,7 +831,7 @@
             "httpMethod": "GET",
             "description": "Get EventReservationLinks count",
             "uri": "eventReservationLinks/count",
-            "responseModel": "getResponse",
+            "responseModel": "fullResponse",
             "parameters": {
             }
         },
@@ -915,7 +915,7 @@
             "httpMethod": "GET",
             "description": "Get EventReservations count",
             "uri": "eventReservations/count",
-            "responseModel": "getResponse",
+            "responseModel": "fullResponse",
             "parameters": {
             }
         },
@@ -974,7 +974,7 @@
             "httpMethod": "GET",
             "description": "Get EventReservationTypes count",
             "uri": "eventReservationTypes/count",
-            "responseModel": "getResponse",
+            "responseModel": "fullResponse",
             "parameters": {
             }
         },
@@ -1033,7 +1033,7 @@
             "httpMethod": "GET",
             "description": "Get EventRounds count",
             "uri": "eventRounds/count",
-            "responseModel": "getResponse",
+            "responseModel": "fullResponse",
             "parameters": {
             }
         },
@@ -1092,7 +1092,7 @@
             "httpMethod": "GET",
             "description": "Get Events count",
             "uri": "events/count",
-            "responseModel": "getResponse",
+            "responseModel": "fullResponse",
             "parameters": {
             }
         },
@@ -1151,7 +1151,7 @@
             "httpMethod": "GET",
             "description": "Get EventStatuses count",
             "uri": "eventStatuses/count",
-            "responseModel": "getResponse",
+            "responseModel": "fullResponse",
             "parameters": {
             }
         },
@@ -1210,7 +1210,7 @@
             "httpMethod": "GET",
             "description": "Get EventTasks count",
             "uri": "eventTasks/count",
-            "responseModel": "getResponse",
+            "responseModel": "fullResponse",
             "parameters": {
             }
         },
@@ -1269,7 +1269,7 @@
             "httpMethod": "GET",
             "description": "Get EventTaskTypes count",
             "uri": "eventTaskTypes/count",
-            "responseModel": "getResponse",
+            "responseModel": "fullResponse",
             "parameters": {
             }
         },
@@ -1328,7 +1328,7 @@
             "httpMethod": "GET",
             "description": "Get EventTypes count",
             "uri": "eventTypes/count",
-            "responseModel": "getResponse",
+            "responseModel": "fullResponse",
             "parameters": {
             }
         },
@@ -1400,7 +1400,7 @@
             "httpMethod": "GET",
             "description": "Get GiftCardHistorys count",
             "uri": "giftCardHistory/count",
-            "responseModel": "getResponse",
+            "responseModel": "fullResponse",
             "parameters": {
             }
         },
@@ -1468,7 +1468,7 @@
             "httpMethod": "GET",
             "description": "Get HeatDetails count",
             "uri": "heatDetails/count",
-            "responseModel": "getResponse",
+            "responseModel": "fullResponse",
             "parameters": {
             }
         },
@@ -1534,7 +1534,7 @@
             "httpMethod": "GET",
             "description": "Get HeatMains count",
             "uri": "heatMain/count",
-            "responseModel": "getResponse",
+            "responseModel": "fullResponse",
             "parameters": {
             }
         },
@@ -1593,7 +1593,7 @@
             "httpMethod": "GET",
             "description": "Get HeatTypes count",
             "uri": "heatTypes/count",
-            "responseModel": "getResponse",
+            "responseModel": "fullResponse",
             "parameters": {
             }
         },
@@ -1659,7 +1659,7 @@
             "httpMethod": "GET",
             "description": "Get Memberships count",
             "uri": "memberships/count",
-            "responseModel": "getResponse",
+            "responseModel": "fullResponse",
             "parameters": {
             }
         },
@@ -1718,7 +1718,7 @@
             "httpMethod": "GET",
             "description": "Get MembershipTypes count",
             "uri": "membershipTypes/count",
-            "responseModel": "getResponse",
+            "responseModel": "fullResponse",
             "parameters": {
             }
         },
@@ -1871,7 +1871,7 @@
             "httpMethod": "GET",
             "description": "Get Payments count",
             "uri": "payments/count",
-            "responseModel": "getResponse",
+            "responseModel": "fullResponse",
             "parameters": {
             }
         },
@@ -1956,7 +1956,7 @@
             "httpMethod": "GET",
             "description": "Get ProcessPayments count",
             "uri": "processPayment/count",
-            "responseModel": "getResponse",
+            "responseModel": "fullResponse",
             "parameters": {
             }
         },
@@ -2015,7 +2015,7 @@
             "httpMethod": "GET",
             "description": "Get ProductClasses count",
             "uri": "productClasses/count",
-            "responseModel": "getResponse",
+            "responseModel": "fullResponse",
             "parameters": {
             }
         },
@@ -2074,7 +2074,7 @@
             "httpMethod": "GET",
             "description": "Get Products count",
             "uri": "products/count",
-            "responseModel": "getResponse",
+            "responseModel": "fullResponse",
             "parameters": {
             }
         },
@@ -2133,7 +2133,7 @@
             "httpMethod": "GET",
             "description": "Get Reservations count",
             "uri": "reservations/count",
-            "responseModel": "getResponse",
+            "responseModel": "fullResponse",
             "parameters": {
             }
         },
@@ -2192,7 +2192,7 @@
             "httpMethod": "GET",
             "description": "Get Sources count",
             "uri": "sources/count",
-            "responseModel": "getResponse",
+            "responseModel": "fullResponse",
             "parameters": {
             }
         },
@@ -2251,7 +2251,7 @@
             "httpMethod": "GET",
             "description": "Get Taxes count",
             "uri": "taxes/count",
-            "responseModel": "getResponse",
+            "responseModel": "fullResponse",
             "parameters": {
             }
         },
@@ -2310,7 +2310,7 @@
             "httpMethod": "GET",
             "description": "Get Users count",
             "uri": "users/count",
-            "responseModel": "getResponse",
+            "responseModel": "fullResponse",
             "parameters": {
             }
         },

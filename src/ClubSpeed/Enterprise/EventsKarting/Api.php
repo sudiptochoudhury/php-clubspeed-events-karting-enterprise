@@ -180,11 +180,11 @@ class Api extends ApiForge
 
     private static function buildFiltersArray($wheres = [])
     {
-        if ($wheres['raw'] ?? null) {
-            return $wheres['raw'];
-        }
-
         $where = [];
+        if (!empty($wheres['raw'])) {
+            $where = $wheres['raw'];
+            unset($wheres['raw']);
+        }
 
         $rootKeyMap = [
             '&&' => '$and',

@@ -1,5 +1,8 @@
 ### Changelog
 
+### 0.0.17 - 19 Dec 2022
+- Fix parsing queries excluding `raw` queries 
+
 ### 0.0.16 - 19 Dec 2022
 - Allow passing raw queries through `raw` key in `where` filter 
 

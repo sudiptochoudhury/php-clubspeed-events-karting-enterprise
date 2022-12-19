@@ -1,5 +1,8 @@
 ### Changelog
 
+### 0.0.16 - 19 Dec 2022
+- Allow passing raw queries through `raw` key in `where` filter 
+
 ### 0.0.15 - 13 Dec 2022
 - Fix responseModel to fullResponse for createEventReservations, createPayments, createHeatMain, createEventReservationLinks
 - Fix responseModel to fullResponse for all *Count operations

@@ -163,7 +163,7 @@ class Api extends ApiForge
      *                                  !!              NOT
      *
      *
-     *
+     *  NOTE: pass a `raw` key to add the value for the `raw` key without parsing
      * @return array
      */
     public static function buildFilters($filters = [])
@@ -180,6 +180,10 @@ class Api extends ApiForge
 
     private static function buildFiltersArray($wheres = [])
     {
+        if ($wheres['raw'] ?? null) {
+            return $wheres['raw'];
+        }
+
         $where = [];
 
         $rootKeyMap = [

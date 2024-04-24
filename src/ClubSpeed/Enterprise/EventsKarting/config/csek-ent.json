@@ -835,6 +835,80 @@
             "parameters": {
             }
         },
+        "_getEventReservationHeatMain": {
+            "extends": "_withAdditionalQueryParameters",
+            "httpMethod": "GET",
+            "description": "Get EventReservationHeatMain",
+            "uri": "EventReservationHeatMain/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri"
+                }
+            }
+        },
+        "createEventReservationHeatMain": {
+            "extends": "_withAdditionalJSONParameters",
+            "httpMethod": "POST",
+            "description": "Create EventReservationHeatMain",
+            "uri": "EventReservationHeatMain",
+            "responseModel": "getResponse",
+            "parameters": {
+            }
+        },
+        "_updateEventReservationHeatMain": {
+            "extends": "_withAdditionalJSONParameters",
+            "httpMethod": "PUT",
+            "description": "Update EventReservationHeatMain",
+            "uri": "EventReservationHeatMain/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "type": [
+                        "integer",
+                        "string"
+                    ],
+                    "required": true
+                }
+            }
+        },
+        "deleteEventReservationHeatMain": {
+            "httpMethod": "POST",
+            "description": "Delete EventReservationHeatMain",
+            "uri": "EventReservationHeatMainDelete",
+            "responseModel": "getResponse",
+            "parameters": {
+                "EventReservationHeatMainID": {
+                    "required": true,
+                    "type": [
+                        "integer",
+                        "string"
+                    ]
+                }
+            }
+        },
+        "_deleteEventReservationHeatMain": {
+            "httpMethod": "DELETE",
+            "description": "Delete EventReservationHeatMain",
+            "uri": "EventReservationHeatMain/{id}",
+            "responseModel": "getResponse",
+            "parameters": {
+                "id": {
+                    "location": "uri",
+                    "required": true
+                }
+            }
+        },
+        "_getEventReservationHeatMainCount": {
+            "extends": "_withAdditionalQueryParameters",
+            "httpMethod": "GET",
+            "description": "Get EventReservationHeatMain count",
+            "uri": "EventReservationHeatMain/count",
+            "responseModel": "fullResponse",
+            "parameters": {
+            }
+        },
         "getEventReservations": {
             "extends": "_withAdditionalQueryParameters",
             "httpMethod": "GET",

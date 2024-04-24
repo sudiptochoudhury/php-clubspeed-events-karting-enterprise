@@ -852,6 +852,7 @@
             "parameters": {
                 "EventReservationHeatMainID": {
                     "required": true,
+                    "location": "json",
                     "type": [
                         "integer",
                         "string"
